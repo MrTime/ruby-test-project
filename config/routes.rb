@@ -1,4 +1,7 @@
 RubyTestProject::Application.routes.draw do
+  resources :books
+
+  match 'books' => 'books#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
