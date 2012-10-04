@@ -9,6 +9,10 @@ RubyTestProject::Application.routes.draw do
   resources :books
 
   match 'books' => 'books#index'
+  
+  match 'authors/list_authors'
+  match 'authors/books_author/:author' => 'authors#books_author'
+   
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
