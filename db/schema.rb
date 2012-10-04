@@ -18,9 +18,15 @@ ActiveRecord::Schema.define(:version => 20121003104857) do
     t.string   "title"
     t.text     "description"
     t.decimal  "price",       :precision => 10, :scale => 0
+<<<<<<< HEAD
     t.integer  "user_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+=======
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "user_id"
+>>>>>>> email_confirmation
   end
 
   create_table "photos", :force => true do |t|
@@ -44,6 +50,10 @@ ActiveRecord::Schema.define(:version => 20121003104857) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

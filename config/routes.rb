@@ -3,13 +3,19 @@ RubyTestProject::Application.routes.draw do
   root :to => 'users#user_page'
   match '/users/new_photo' => 'users#new_photo'
   match '/users/add_photo' => 'users#add_photo' ,   :via => :post
+  match '/users/successful-registration' => 'users#successful_registration'
+  match '/users/new_photo' => 'photos#new'
+  match '/users/add_photo' => 'photos#add_photo' , :via => :post
   match '/users/user_page' => 'users#user_page'
-  devise_for :users
+  devise_for :users,:controllers => { :registrations => "registrations" }
 
   match '/books/:id/new_photo' => 'books#new_photo'
   match '/books/add_photo'     => 'books#add_photo', :via => :post
 
   resources :books
+  #devise_scope :user do
+  #  get '/users/successful-registration' => 'devise/registrations#successful_registration'
+  #end
 
   match 'books' => 'books#index'
   # The priority is based upon order of creation:
