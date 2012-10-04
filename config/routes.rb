@@ -1,11 +1,15 @@
 RubyTestProject::Application.routes.draw do
 
   root :to => 'users#user_page'
+  match '/users/successful-registration' => 'users#successful_registration'
   match '/users/new_photo' => 'photos#new'
   match '/users/add_photo' => 'photos#add_photo' , :via => :post
   match '/users/user_page' => 'users#user_page'
   devise_for :users,:controllers => { :registrations => "registrations" }
 
+  #devise_scope :user do
+  #  get '/users/successful-registration' => 'devise/registrations#successful_registration'
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
