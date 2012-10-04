@@ -1,12 +1,14 @@
 RubyTestProject::Application.routes.draw do
-  
+
   root :to => 'users#user_page'
   match '/users/new_photo' => 'photos#new'
   match '/users/add_photo' => 'photos#add_photo' , :via => :post
   match '/users/user_page' => 'users#user_page'
   devise_for :users
 
+  resources :books
 
+  match 'books' => 'books#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

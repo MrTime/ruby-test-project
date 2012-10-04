@@ -7,9 +7,14 @@
 # Ignore bundler config
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+config/database.yml
+log/*
+tmp/*
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
