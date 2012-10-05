@@ -13,11 +13,7 @@ RubyTestProject::Application.routes.draw do
   match '/books/add_photo'     => 'books#add_photo', :via => :post
 
   resources :books
-  #devise_scope :user do
-  #  get '/users/successful-registration' => 'devise/registrations#successful_registration'
-  #end
-
-  match 'books' => 'books#index'
+  match 'books' => 'books#index', :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
