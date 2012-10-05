@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
+   before_filter :authenticate, :except => [:index, :show]
+
   def index
     @books = Book.all
 
@@ -12,6 +14,8 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
+#  private
+
   def show
     @book = Book.find(params[:id])
 
@@ -42,7 +46,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     @book.user_id = current_user.id
-    
+
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -85,20 +89,26 @@ class BooksController < ApplicationController
   def new_photo
    @photo = Photo.new
    @book = Book.find(params[:id])
-  end  
+  end
 
   def add_photo
     @book = Book.find(params[:photo][:book_id])
     uploaded_io = params[:photo][:picture]
       File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
-        file.write(uploaded_io.read) 
+        file.write(uploaded_io.read)
       end
       @photo  = Photo.new
       @photo.book_id = @book.id
       @photo.save
       @photo.image_path  =  uploaded_io.original_filename
-      @photo.save    
+      @photo.save
       redirect_to("/books/#{params[:photo][:book_id]}")
-  end  
+  end
+
+  private
+
+  def authenticate
+     redirect_to("/users/sign_in") unless user_signed_in?
+  end
 
 end
