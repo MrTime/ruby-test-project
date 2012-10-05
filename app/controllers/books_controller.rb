@@ -46,6 +46,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     @book.user_id = current_user.id
+    @book.owner_login = current_user.email
 
     respond_to do |format|
       if @book.save
