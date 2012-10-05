@@ -11,9 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -27,7 +24,20 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
-  <div class="actions">
+  
+  
+  
+  <div class="field">
+    <%= label_tag "Authors" %><br />
+    <%= f.fields_for :authors do |c| %><br>
+    
+    <%= c.text_field :author %><br>
+<% end %>
+<br>
+<div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+
+

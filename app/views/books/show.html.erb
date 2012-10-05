@@ -2,7 +2,7 @@
 
 <p>
   <b>Author:</b>
-  <%= @book.author %>
+  <%= @book.authors.collect(&:author).join(", ") %>
 </p>
 
 <p>
