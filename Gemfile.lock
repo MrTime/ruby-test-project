@@ -116,8 +116,8 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (= 2.0.4)
   coffee-rails (~> 3.2.1)
-  devise
-  haml
+  devise (= 2.1.2)
+  haml (= 3.1.7)
   jquery-rails
   mysql2 (= 0.3.11)
   rails (= 3.2.8)
