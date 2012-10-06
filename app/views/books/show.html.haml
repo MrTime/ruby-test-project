@@ -3,14 +3,23 @@
   %b Author:
   = @book.author
 %p
-  %b Title:
-  = @book.title
-%p
   %b Description:
   = @book.description
 %p
+  %b Title:
+  = @book.title
+%p
   %b Price:
   = @book.price
+%p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
 = link_to 'Edit', edit_book_path(@book)
 |
 \#{link_to 'Back', books_path}

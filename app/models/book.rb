@@ -1,3 +1,3 @@
 class Book < ActiveRecord::Base
-  attr_accessible :author, :description, :price, :title
+  attr_accessible :author, :description, :genre, :isbn, :price, :title, :year
 end
