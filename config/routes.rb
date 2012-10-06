@@ -7,7 +7,6 @@ RubyTestProject::Application.routes.draw do
 
   resources :books
   
-  
   match 'books' => 'books#index'
   match 'search' => 'search#index'
   match 'search_books' => 'search#search_books'
