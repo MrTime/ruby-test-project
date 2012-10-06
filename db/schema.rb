@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20121003104857) do
     t.decimal  "price",       :precision => 10, :scale => 0
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.integer  "user_id"
   end
 
   create_table "photos", :force => true do |t|
