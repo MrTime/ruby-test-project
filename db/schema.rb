@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20121005105846) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.integer  "user_id"
+<<<<<<< HEAD
     t.string   "owner_login"
+=======
+>>>>>>> b2f74f55b5b4ce0c28ab2bdd1222023dbeb75bb0
   end
 
   create_table "photos", :force => true do |t|
