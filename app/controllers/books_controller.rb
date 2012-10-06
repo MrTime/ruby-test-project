@@ -41,7 +41,8 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
-
+    @book.user_id = current_user.id
+    
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -80,5 +81,24 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-end  
-  
+
+  def new_photo
+   @photo = Photo.new
+   @book = Book.find(params[:id])
+  end  
+
+  def add_photo
+    @book = Book.find(params[:photo][:book_id])
+    uploaded_io = params[:photo][:picture]
+      File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
+        file.write(uploaded_io.read) 
+      end
+      @photo  = Photo.new
+      @photo.book_id = @book.id
+      @photo.save
+      @photo.image_path  =  uploaded_io.original_filename
+      @photo.save    
+      redirect_to("/books/#{params[:photo][:book_id]}")
+  end  
+
+end
