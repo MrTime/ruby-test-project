@@ -1,6 +1,12 @@
 RubyTestProject::Application.routes.draw do
   devise_for :users
 
+  resources :books
+  
+  
+  match 'books' => 'books#index'
+  match 'search' => 'search#index'
+  match 'search_books' => 'search#search_books'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
