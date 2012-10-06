@@ -1,6 +1,0 @@
-<h2>Add Photo</h2>
-  <%= form_for @photo, :url=>{:action => :add_photo},:html => { :multipart => true } do |f| %>
-  <%= f.file_field :picture %><br/>
-  <%= f.submit "Add" %> 
-  <% end %> 
-<%= link_to "Back", :back %>

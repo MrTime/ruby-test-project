@@ -47,12 +47,16 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     haml (3.1.2)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
+=======
+    haml (3.1.7)
+>>>>>>> 13eef80c86b5fd096be7f7817c4f5f4ebba1609b
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -122,9 +126,13 @@ DEPENDENCIES
   bootstrap-sass (= 2.0.4)
   coffee-rails (~> 3.2.1)
   devise
+<<<<<<< HEAD
   haml-rails
+=======
+  haml
+>>>>>>> 13eef80c86b5fd096be7f7817c4f5f4ebba1609b
   jquery-rails
-  mysql2
+  mysql2 (= 0.3.11)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
