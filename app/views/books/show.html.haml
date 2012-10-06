@@ -1,4 +1,5 @@
 %p#notice= notice
+=image_tag @book.photo.image_path
 %p
   %b Author:
   = @book.author
@@ -12,5 +13,7 @@
   %b Price:
   = @book.price
 = link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Add photo', controller: "books", action: "new_photo"
 |
 \#{link_to 'Back', books_path}

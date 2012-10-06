@@ -6,9 +6,16 @@ RubyTestProject::Application.routes.draw do
   match '/users/user_page' => 'users#user_page'
   devise_for :users,:controllers => { :registrations => "registrations" }
 
+  match '/books/:id/new_photo' => 'books#new_photo'
+  match '/books/add_photo'     => 'books#add_photo', :via => :post
+
   resources :books
   
   match 'books' => 'books#index'
+  
+  match 'authors/list_authors'
+  match 'authors/books_author/:author' => 'authors#books_author'
+   
   match 'search' => 'search#index'
   match 'search_books' => 'search#search_books'
   # The priority is based upon order of creation:
