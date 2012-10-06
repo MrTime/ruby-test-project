@@ -1,0 +1,9 @@
+<div><%= @user.email %><div/>
+	<% if @user.photo.nil? %>
+		<div> You don't have any photo <div/>
+		<%= link_to "Add photo", :controller => "photos", :action => "new"%>	
+	<%else%>		
+		<div><%= image_tag(@user.photo.image_path)%><div/>
+		<%= link_to "Change photo", :controller => "photos", :action => "new"%>
+	<%end%>
+			
