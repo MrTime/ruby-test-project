@@ -119,7 +119,7 @@ DEPENDENCIES
   devise
   haml
   jquery-rails
-  mysql2
+  mysql2 (= 0.3.11)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

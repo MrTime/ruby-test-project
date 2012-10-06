@@ -18,15 +18,14 @@ ActiveRecord::Schema.define(:version => 20121003104857) do
     t.string   "title"
     t.text     "description"
     t.decimal  "price",       :precision => 10, :scale => 0
-    t.integer  "user_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.integer  "user_id"
   end
 
   create_table "photos", :force => true do |t|
     t.string   "image_path"
     t.integer  "user_id"
-    t.integer  "book_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
