@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(:version => 20121006105648) do
     t.string   "author"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 2
+    t.decimal  "price",       :precision => 10, :scale => 0
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.string   "owner_login"
     t.integer  "user_id"
+    t.string   "owner_login"
   end
 
   create_table "photos", :force => true do |t|
