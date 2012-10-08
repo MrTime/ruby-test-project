@@ -33,4 +33,5 @@ class PhotosController < ApplicationController
       redirect_to("/users/user_page")
   	end  	  
   end
+
 end

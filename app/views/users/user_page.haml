@@ -3,7 +3,7 @@
   %div/
   - if @user.photo.nil?
     %div
-      You don't have any photo
+      = image_tag('/assets/default/default-user.png')
       %div/
       = link_to "Add photo", controller: "photos", action: "new"
   - else
