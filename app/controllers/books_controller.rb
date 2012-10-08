@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
+   before_filter :authenticate, :except => [:index, :show]
+
   def index
     @books = Book.all
 
@@ -12,6 +14,8 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
+#  private
+
   def show
     @book = Book.find(params[:id])
 
@@ -41,6 +45,8 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
+    @book.user_id = current_user.id
+    @book.owner_login = current_user.email
 
     respond_to do |format|
       if @book.save
@@ -80,4 +86,11 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def authenticate
+     redirect_to("/users/sign_in") unless user_signed_in?
+  end
+
 end

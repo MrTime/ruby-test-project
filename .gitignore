@@ -17,3 +17,5 @@ tmp/*
 *.DS_Store
 *.swp
 *.out
+/app/assets/images/*
+*.sqlite3

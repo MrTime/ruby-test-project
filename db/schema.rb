@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(:version => 20121008150004) do
     t.string   "author"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 0
+    t.decimal  "price",       :precision => 10, :scale => 2
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.string   "owner_login"
     t.integer  "user_id"
     t.integer  "isbn"
     t.string   "genre"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20121008150004) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "book_id"
   end
 
   create_table "users", :force => true do |t|
@@ -46,6 +48,10 @@ ActiveRecord::Schema.define(:version => 20121008150004) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

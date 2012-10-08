@@ -2,26 +2,28 @@
 %table
   %tr
     %th Author
-    %th Description
     %th Title
+    %th Description
     %th Price
     %th Isbn
     %th Genre
     %th Year
-    %th
+    %th Added by
     %th
     %th
   - @books.each do |book|
     %tr
       %td= book.author
-      %td= book.description
       %td= book.title
-      %td= book.price
+      %td= book.description
+      %td= price book.price
       %td= book.isbn
       %td= book.genre
       %td= book.year
-      %td= link_to 'Show', book
-      %td= link_to 'Edit', edit_book_path(book)
-      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+      %td=book.owner_login
+      %td= link_to 'Show detail information', book
+
+//      %td= link_to 'Edit', edit_book_path(book)
+//      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Book', new_book_path

@@ -1,4 +1,6 @@
 %p#notice= notice
+- unless  @book.photo.nil?
+  =image_tag @book.photo.image_path
 %p
   %b Author:
   = @book.author
@@ -20,6 +22,13 @@
 %p
   %b Year:
   = @book.year
+%p
+  %b Added by:
+  = @book.owner_login
+  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
 = link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Add photo', controller: "books", action: "new_photo"
 |
 \#{link_to 'Back', books_path}
