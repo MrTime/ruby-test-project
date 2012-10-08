@@ -1,7 +1,10 @@
 RubyTestProject::Application.routes.draw do
-  resources :books
-
+   resources :books
+  resources :lists
+  
   match 'books' => 'books#index'
+  match 'lists' => 'lists#index'
+  match 'abook/:id' => 'lists#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
