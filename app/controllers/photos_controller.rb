@@ -17,8 +17,12 @@ class PhotosController < ApplicationController
     @photo.image_path  =  uploaded_io.original_filename
 
     if params[:photo].has_key?("book_id")
-  	  @photo.book_id = params[:photo][:book_id]
+      @book = Book.find(params[:photo][:book_id])
+  	  @photo.book_id = @book_id
   	  @photo.save
+  	  if @book.photo
+        @book.photo = @photo
+      end
   	  redirect_to("/books/#{params[:photo][:book_id]}")
   	else
   	  @photo.user_id = current_user.id
