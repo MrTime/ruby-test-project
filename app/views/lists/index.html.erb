@@ -1,0 +1,9 @@
+<center><h2>Books </h2></center>
+
+<% for book in @books do %>
+<p>
+<%= "#{book.author} #{book.title}" %>
+<p>
+<%= link_to "Show", "/abook/#{book.id}"%>
+<% end %>
+<p>

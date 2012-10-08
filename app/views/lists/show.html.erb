@@ -1,0 +1,43 @@
+<center><h2> BOOK </h2></center>
+  
+  <p>
+    <b>Author:</b>
+    <%= @book.author%>
+  </p>
+  <p>
+    <b>Title:</b>
+    <%= @book.title%>
+  </p>
+  <p>
+    <b>Description:</b>
+    <%= @book.description%>
+  </p>
+  <p>
+    <b>Book add:</b>
+    <%= @book.created_at%>
+  </p>
+  <h3>Comments:</h3>
+  <%= form_for @book, :url => "#{lists_path}/#{@book.id}" do |f|%>
+
+    <% f.text_field :title %>
+
+    <% f.text_field :author %>
+   
+    <%= f.fields_for :comments do |c| %>
+    <br />
+      <% if c.object.name.nil? %>
+        <br />
+        Enter comment
+        <%= c.text_field :name %>
+     <% else  %>
+        <br />
+        <%= c.object.name unless c.object.name == "" %>
+     <% end %>
+  <% end %>
+  <%= f.submit "Save comment"%>
+<% end %>
+
+<p>
+<%= link_to 'Back', lists_path %>
+<p>
+
