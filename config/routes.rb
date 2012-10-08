@@ -1,5 +1,7 @@
 RubyTestProject::Application.routes.draw do
   root :to => 'users#user_page'
+  match '/users/new_photo' => 'users#new_photo'
+  match '/users/add_photo' => 'users#add_photo' ,   :via => :post
   match '/users/successful-registration' => 'users#successful_registration'
   match '/users/new_photo' => 'photos#new'
   match '/users/add_photo' => 'photos#add_photo' , :via => :post
@@ -10,8 +12,7 @@ RubyTestProject::Application.routes.draw do
   match '/books/add_photo'     => 'books#add_photo', :via => :post
 
   resources :books
-  
-  match 'books' => 'books#index'
+  match 'books' => 'books#index', :via => :get
   
   match 'authors/list_authors'
   match 'authors/books_author/:author' => 'authors#books_author'

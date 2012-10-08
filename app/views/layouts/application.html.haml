@@ -8,13 +8,6 @@
     = render 'layouts/shim'
   %body
     = render 'layouts/header'
-    #user_nav
-      - if user_signed_in?
-        Signed in as #{current_user.email}
-        \#{link_to "Sign out"}
-      - else
-        = link_to "Sign up"
-        or #{link_to "Sign in"}.
     .container
       = yield
       = render 'layouts/footer'
