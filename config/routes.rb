@@ -1,5 +1,4 @@
 RubyTestProject::Application.routes.draw do
-
   root :to => 'users#user_page'
   match '/users/new_photo' => 'users#new_photo'
   match '/users/add_photo' => 'users#add_photo' ,   :via => :post
@@ -14,6 +13,12 @@ RubyTestProject::Application.routes.draw do
 
   resources :books
   match 'books' => 'books#index', :via => :get
+  
+  match 'authors/list_authors'
+  match 'authors/books_author/:author' => 'authors#books_author'
+   
+  match 'search' => 'search#index'
+  match 'search_books' => 'search#search_books'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
