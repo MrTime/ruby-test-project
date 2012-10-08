@@ -1,0 +1,7 @@
+%h2 Add Photo
+= form_for @photo, url: { action: :add_photo }, html: { multipart: true } do |f|
+  = f.file_field :picture 
+  = f.hidden_field :book_id, value: @book.id
+  %br/
+  = f.submit "Add"
+= link_to "Back", :back
