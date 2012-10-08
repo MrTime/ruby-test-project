@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
 
     if params[:photo].has_key?("book_id")
       @book = Book.find(params[:photo][:book_id])
-  	  @photo.book_id = @book_id
+  	  @photo.book_id = @book.id
   	  @photo.save
   	  if @book.photo
         @book.photo = @photo
