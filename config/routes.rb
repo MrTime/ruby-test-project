@@ -1,4 +1,6 @@
 RubyTestProject::Application.routes.draw do
+  get "home/index"
+
   root :to => 'users#user_page'
   match '/users/new_photo' => 'users#new_photo'
   match '/users/add_photo' => 'users#add_photo' ,   :via => :post
