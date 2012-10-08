@@ -1,8 +1,7 @@
 %p#notice= notice
 - if @book.photo.nil?
   %div
-    No photo
-    //= image_tag('/assets/default/default-book.png')
+    = image_tag('/assets/default/default-book.png')
     %div/
 - else
   %div
