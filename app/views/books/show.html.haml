@@ -5,14 +5,23 @@
   %b Author:
   = @book.author
 %p
-  %b Title:
-  = @book.title
-%p
   %b Description:
   = @book.description
 %p
+  %b Title:
+  = @book.title
+%p
   %b Price:
-  = price @book.price
+  = @book.price
+%p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
 %p
   %b Added by:
   = @book.owner_login

@@ -5,6 +5,9 @@
     %th Title
     %th Description
     %th Price
+    %th Isbn
+    %th Genre
+    %th Year
     %th Added by
     %th
     %th
@@ -14,7 +17,10 @@
       %td= book.title
       %td= book.description
       %td= price book.price
-      %td= book.owner_login
+      %td= book.isbn
+      %td= book.genre
+      %td= book.year
+      %td=book.owner_login
       %td= link_to 'Show detail information', book
 
 //      %td= link_to 'Edit', edit_book_path(book)
