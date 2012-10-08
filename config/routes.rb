@@ -1,26 +1,33 @@
 RubyTestProject::Application.routes.draw do
-  get "home/index"
+  #get "home/index"
 
-  root :to => 'users#user_page'
-  match '/users/new_photo' => 'users#new_photo'
-  match '/users/add_photo' => 'users#add_photo' ,   :via => :post
-  match '/users/successful-registration' => 'users#successful_registration'
-  match '/users/new_photo' => 'photos#new'
-  match '/users/add_photo' => 'photos#add_photo' , :via => :post
-  match '/users/user_page' => 'users#user_page'
+  root :to => 'home#index' #home page
+
+  resources :users
+  #match '/users/new_photo' => 'users#new_photo'
+  #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
+  #match '/users/successful-registration' => 'users#successful_registration'
+  #match '/users/new_photo' => 'photos#new'
+  #match '/users/add_photo' => 'photos#add_photo' , :via => :post
+  #match '/users/user_page' => 'users#user_page'
   devise_for :users,:controllers => { :registrations => "registrations" }
 
-  match '/books/:id/new_photo' => 'books#new_photo'
-  match '/books/add_photo'     => 'books#add_photo', :via => :post
+  #match '/books/:id/new_photo' => 'books#new_photo'
+  #match '/books/add_photo'     => 'books#add_photo', :via => :post
 
-  resources :books
+  resources :books do
+    get "unique_authors" , :on => :collection
+  end
+
+  match "books/:author" => "books#find_by_author"
   match 'books' => 'books#index', :via => :get
-  
-  match 'authors/list_authors'
-  match 'authors/books_author/:author' => 'authors#books_author'
-   
-  match 'search' => 'search#index'
-  match 'search_books' => 'search#search_books'
+
+  #match 'authors/list_authors'
+  #match 'authors/books_author/:author' => 'authors#books_author'
+  #resources :authors
+
+  #match 'search' => 'search#index'
+  #match 'search_books' => 'search#search_books'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
