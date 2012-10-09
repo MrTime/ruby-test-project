@@ -5,6 +5,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @search = params[:search]
+    
+    @books.each do |b|
+      if b.isbn == @search.to_i && @search !="" && @search !=nil
+        @books = Book.find(:all, :conditions => {:isbn => @search})
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
