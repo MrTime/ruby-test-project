@@ -8,9 +8,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def successful_registration
-  end
-
   def new_photo
     @photo = Photo.new
   end
@@ -30,4 +27,5 @@ class UsersController < ApplicationController
     end
     redirect_to("/users/user_page")
   end
-end	
+
+end
