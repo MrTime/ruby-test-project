@@ -14,6 +14,15 @@
   %b Price:
   = price @book.price
 %p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
+%p
   %b Added by:
   = @book.owner_login
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
