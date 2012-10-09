@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     @photo = Photo.new
   end
 
+  def edit
+  end
+
   def add_photo
     uploaded_io = params[:photo][:picture]
     File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
