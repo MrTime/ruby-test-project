@@ -6,6 +6,7 @@ RubyTestProject::Application.routes.draw do
   resources :users do
     resources :photos
   end
+
   #match '/users/new_photo' => 'users#new_photo'
   #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
   #match '/users/successful-registration' => 'users#successful_registration'
@@ -19,15 +20,17 @@ RubyTestProject::Application.routes.draw do
 
   resources :books do
     resources :photos
-    get "unique_authors" , :on => :collection
   end
 
-  match "books/:author" => "books#find_by_author"
-  match 'books' => 'books#index', :via => :get
+
+  #match "books/:author" => "books#find_by_author"
+  #match 'books' => 'books#index', :via => :get
 
   #match 'authors/list_authors'
   #match 'authors/books_author/:author' => 'authors#books_author'
-  #resources :authors
+  resources :authors do
+    resources :books, only: :index
+  end
 
   #match 'search' => 'search#index'
   #match 'search_books' => 'search#search_books'
