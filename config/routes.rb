@@ -3,7 +3,9 @@ RubyTestProject::Application.routes.draw do
 
   root :to => 'home#index' #home page
 
-  resources :users
+  resources :users do
+    resources :photos
+  end
   #match '/users/new_photo' => 'users#new_photo'
   #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
   #match '/users/successful-registration' => 'users#successful_registration'
@@ -16,6 +18,7 @@ RubyTestProject::Application.routes.draw do
   #match '/books/add_photo'     => 'books#add_photo', :via => :post
 
   resources :books do
+    resources :photos
     get "unique_authors" , :on => :collection
   end
 
