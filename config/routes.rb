@@ -3,7 +3,9 @@ RubyTestProject::Application.routes.draw do
 
   root :to => 'home#index' #home page
 
-  resources :users do
+  devise_for :users,:controllers => { :registrations => "registrations" }
+
+  resources :users, except: :sign_up do
     resources :photos
   end
 
@@ -11,7 +13,6 @@ RubyTestProject::Application.routes.draw do
   #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
   #match '/users/new_photo' => 'photos#new'
   #match '/users/add_photo' => 'photos#add_photo' , :via => :post
-  devise_for :users,:controllers => { :registrations => "registrations" }
 
   #match '/books/:id/new_photo' => 'books#new_photo'
   #match '/books/add_photo'     => 'books#add_photo', :via => :post
