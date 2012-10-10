@@ -7,6 +7,10 @@ class PhotosController < ApplicationController
 	  end
   end
 
+  def upload 
+    "say hello"
+  end 
+
   def add
   	@photo  = Photo.new
     uploaded_io = params[:photo][:picture]

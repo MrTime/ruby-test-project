@@ -1,13 +1,18 @@
 %h2 Add Photo
-= form_for @photo, url: { action: :add }, html: { multipart: true } do |f|
+= form_for @photo, url: { action: :add }, html: { multipart: true } , :id => "picture_form" do |f|
   - if params.has_key?("id")
     = f.hidden_field :book_id, value: @book.id
-    = f.file_field :picture 
+    = f.file_field :picture , :id => "picture"
+    = f.button "Upload" ,:value => "Upload" , :id => "upload_button" 
     %br/
     = f.submit "Add"
   - else
-    = f.file_field :picture 
+    = f.file_field :picture, :id => "picture"
+    %br/
+    = f.button "Upload" ,:value => "Upload" , :id => "upload_button" 
     %br/
     = f.submit "Add"
-  %progress max="100" value="60"
 = link_to "Back", :back
+
+%p{:id=>"upload-status"}
+%p{:id=>"progress"}
