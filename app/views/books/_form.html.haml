@@ -25,3 +25,4 @@
     = f.text_field :price
   .actions
     = f.submit
+= render "/photos/new_photo", item: @book, url: "/books/#{@book.id}/photos"
