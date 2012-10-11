@@ -1,14 +1,12 @@
 RubyTestProject::Application.routes.draw do
   root :to => 'users#user_page'
-  #match '/users/new_photo' => 'users#new_photo'
-  #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
+
   match '/users/successful-registration' => 'users#successful_registration'
   match '/users/user_page' => 'users#user_page'
   devise_for :users,:controllers => { :registrations => "registrations" }
 
   match '/photos/new'     => 'photos#new'
   match '/photos/:id/new' => 'photos#new'
-  match '/photos/upload'  => 'photos#upload', :via => :post , :as => :upload
   match '/photos/add'     => 'photos#add', :via => :post, :as => :new_photo
 
   resources :books

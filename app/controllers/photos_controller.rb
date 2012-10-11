@@ -7,27 +7,23 @@ class PhotosController < ApplicationController
 	  end
   end
 
-  def upload 
-    "say hello"
-  end 
-
   def add
   	@photo  = Photo.new
-    uploaded_io = params[:photo][:picture]
+    uploaded_io = params[:photo]
     File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
       file.write(uploaded_io.read)
     end
 
     @photo.image_path  =  uploaded_io.original_filename
 
-    if params[:photo].has_key?("book_id")
-      @book = Book.find(params[:photo][:book_id])
+    if params.has_key?("book_id")
+      @book = Book.find(params[:book_id])
   	  @photo.book_id = @book.id
   	  @photo.save
   	  if @book.photo
         @book.photo = @photo
       end
-  	  redirect_to("/books/#{params[:photo][:book_id]}")
+  	  redirect_to("/books/#{params[:book_id]}")
   	else
   	  @photo.user_id = current_user.id
   	  @photo.save
