@@ -28,6 +28,8 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
+    #For uploading images
+    @photo = Photo.new
     @book = Book.new
 
     respond_to do |format|
@@ -38,6 +40,8 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    #For uploading images
+    @photo = Photo.new
     @book = Book.find(params[:id])
   end
 
@@ -85,11 +89,6 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url }
       format.json { head :no_content }
     end
-  end
-
-  def new_photo
-   @photo = Photo.new
-   @book = Book.find(params[:id])
   end
 
   private

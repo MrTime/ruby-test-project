@@ -7,7 +7,9 @@ class PhotosController < ApplicationController
 	  end
   end
 
-  def add
+  def create
+    puts "Createeeeeeeeeeeeeeeeeeeeee!!!"
+=begin
   	@photo  = Photo.new
     uploaded_io = params[:photo][:picture]
     File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
@@ -31,6 +33,7 @@ class PhotosController < ApplicationController
         current_user.photo = @photo
       end
       redirect_to("/users/user_page")
-  	end  	  
+  	end
+=end
   end
 end

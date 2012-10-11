@@ -25,5 +25,5 @@
 %p
   Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}.
 
-= render "/photos/new_photo", item: current_user, url: "/users/#{current_user.id}/photos"
+= render "/photos/new_photo", item: current_user, photo: @photo#url: "/users/#{current_user.id}/photos"
 = link_to "Back", :back

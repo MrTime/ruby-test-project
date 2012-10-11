@@ -1,5 +1,5 @@
 %h2 Add Photo
-= form_for item, url: url, html: { multipart: true } do |f|
+= form_for [item,@photo],  html: { multipart: true } do |f|
   = f.file_field :picture
   %br/
   = f.submit "Add"
