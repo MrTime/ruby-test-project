@@ -5,7 +5,7 @@ RubyTestProject::Application.routes.draw do
 
   devise_for :users,:controllers => { :registrations => "registrations" }
 
-  resources :users, except: :sign_up do
+  resources :users, :sign_up do
     resources :photos
   end
 
