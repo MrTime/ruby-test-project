@@ -5,6 +5,9 @@
   %b Author:
   = @book.author
 %p
+  %b All Author:
+  = @book.authors.collect(&:author).join(", ")
+%p
   %b Title:
   = @book.title
 %p
