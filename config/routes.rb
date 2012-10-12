@@ -1,4 +1,18 @@
 RubyTestProject::Application.routes.draw do
+
+  resources :comments
+
+  get "pages/help"
+
+  get "pages/home"
+
+  get "pages/about"
+
+  get "pages/contact"
+
+  get "pages/news"
+
+  get "users/sign_out"
   root :to => 'users#user_page'
   match '/users/new_photo' => 'users#new_photo'
   match '/users/add_photo' => 'users#add_photo' ,   :via => :post
