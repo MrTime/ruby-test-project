@@ -5,12 +5,23 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-
+    @kind = params[:kind]
+        
+    if @kind.to_i == 1
+      @books = @books.sort_by!{|b| b.title}
+    elsif @kind.to_i == 2
+      @books = @books.sort_by!{|b| b.price}
+    elsif @kind.to_i == 3
+      @books = @books.sort_by!{|b| b.star}
+    end
+      
+      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @books }
     end
-  end
+    
+    end
 
   # GET /books/1
   # GET /books/1.json
