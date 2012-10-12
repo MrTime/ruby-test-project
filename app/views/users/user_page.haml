@@ -8,18 +8,38 @@
       = link_to "Add photo", controller: "users", action: "new_photo"
   - else
     %div
-      = image_tag(@user.photo.image_path)
+      = image_tag @user.photo.image_path, :class => "image_book"
+
       %div/
-      = link_to "Change photo", controller: "users", action: "new_photo"
+
 
 - unless @user.books.empty?
-  %table
+
+
+  %ul.nav.nav-list
+    %li
+      %a{:href => "/books"}
+        %i.icon-book
+        Show books
+    %li
+      %a{:href => "/users/new_photo"}
+        %i.icon-camera
+        Change photo
+        %li
+      %a{:href => edit_user_registration_path(@user)}
+        %i.icon-wrench
+        Change password
+        %li
+      %a{:href => "#"}
+        %i.icon-shopping-cart
+        My cart
+
+  %table.table.table-hover
     %tr
       %th Author
       %th Title
       %th Description
       %th Price
-      %th
       %th
       %th
     - @user.books.each do |book|
@@ -28,9 +48,15 @@
         %td= book.title
         %td= book.description
         %td= book.price
-        %td= link_to 'Show', book
-        %td= link_to 'Edit', edit_book_path(book)
-        %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          %ul
+            %li
+              = link_to '', edit_book_path(book), :class => "icon-edit edit"
+              = link_to '', book, :class => "icon-eye-open"
+
+        %td
+          %ul
+            %li.icon-remove= link_to ' ', book, method: :delete, data: { confirm: 'Are you sure?' }
 - else
   %div
     You don't have any books yet

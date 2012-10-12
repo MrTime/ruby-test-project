@@ -1,22 +1,29 @@
+
 %p#notice= notice
-- unless  @book.photo.nil?
-  =image_tag @book.photo.image_path
-%p
-  %b Author:
+-unless  @book.photo.nil?
+  =image_tag @book.photo.image_path, :class => "image_book"
+ 
+%HR/
+
+%p.text1
+  %b.text Author:
   = @book.author
-%p
-  %b Title:
+%p.text1
+  %b.text Title:
   = @book.title
-%p
-  %b Description:
+%p.text1
+  %b.text Description:
   = @book.description
-%p
-  %b Price:
+%p.text1
+  %b.text Price:
   = price @book.price
-%p
-  %b Added by:
+%p.text1
+  %b.text Added by:
   = @book.owner_login
+
+
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+  %HR/
 
 = link_to 'Edit', edit_book_path(@book)
 |

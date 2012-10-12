@@ -11,3 +11,36 @@
  *= require_self
  *= require_tree .
  */
+
+
+.edit{
+    list-style-type: none;
+}
+
+.image_book{
+   width: 160px;
+   height: 180px;
+    float: left;
+    margin: 5px;
+}
+.book_info{
+    float: left;
+}
+ul{
+    list-style: none;
+}
+.text{
+    font-family: Verdana, Arial, Helvetica, sans-serif; /* Гарнитура текста */
+    font-size: 14px; /* Размер шрифта в пикселях */
+    font-style: italic; /* Начертание шрифта */
+    font-weight: 800; /* Насыщенность шрифта */
+    text-align:  left  /* выравнивание текста */
+
+}
+.text1{
+    font-family: Verdana, Arial, Helvetica, sans-serif; /* Гарнитура текста */
+    font-size: 12px; /* Размер шрифта в пикселях */
+    font-style: italic; /* Начертание шрифта */
+    font-weight: 600; /* Насыщенность шрифта */
+    text-align:  left  /* выравнивание текста */
+

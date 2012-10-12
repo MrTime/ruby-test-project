@@ -1,0 +1,18 @@
+
+%h1 Change password
+= form_for @user do |f|
+  .field
+    = f.label "Old password"
+    %br/
+    = f.password_field :old_password
+  .field
+    = f.label "New password"
+    %br/
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation, "Confirmation new password"
+    %br/
+    = f.password_field :password_confirmation
+  .actions
+    = f.submit "Update"
+=debug params
