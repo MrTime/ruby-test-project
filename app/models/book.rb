@@ -3,4 +3,5 @@ class Book < ActiveRecord::Base
 
   has_one :photo
   belongs_to :user
+  has_one :rate
 end

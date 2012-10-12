@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006105648) do
+ActiveRecord::Schema.define(:version => 20121010193752) do
 
   create_table "books", :force => true do |t|
     t.string   "author"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20121006105648) do
     t.decimal  "price",       :precision => 10, :scale => 0
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.integer  "user_id"
     t.string   "owner_login"
+    t.integer  "user_id"
   end
 
   create_table "photos", :force => true do |t|
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20121006105648) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "book_id"
+  end
+
+  create_table "rates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.integer  "rate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

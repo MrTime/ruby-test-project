@@ -14,6 +14,8 @@ RubyTestProject::Application.routes.draw do
   resources :books
   match 'books' => 'books#index', :via => :get
   
+  match 'books/rate/:id' => 'books#rate'
+
   match 'authors/list_authors'
   match 'authors/books_author/:author' => 'authors#books_author'
    
