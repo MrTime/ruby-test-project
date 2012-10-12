@@ -1,15 +1,15 @@
 %div
   = @user.email
-  %div/
+  %div
   - if @user.photo.nil?
     %div
       You don't have any photo
-      %div/
+      %div
       = link_to "Add photo", controller: "users", action: "new_photo"
   - else
     %div
       = image_tag(@user.photo.image_path)
-      %div/
+      %div
       = link_to "Change photo", controller: "users", action: "new_photo"
 
 - unless @user.books.empty?

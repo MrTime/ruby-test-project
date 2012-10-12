@@ -1,3 +1,64 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dashboard {
+  height: 737px;
+  width: 310px;
+  margin: 0 15px 0 0;
+  float: left;
+}
+
+.dashboard-module {
+  margin: 0 15px 15px 0;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  background-color: #f9f9f9;
+  padding: 12px;
+//  cursor: pointer;
+}
+
+.content-main {
+  margin: 0 0 15px 15px;
+  padding: 12px;
+  background-color: #f9f9f9;
+
+  float: right;
+  width: 576px;
+
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+tr th {
+  padding: 5px;
+  border: 2px solid red;
+}
+
+td {
+  padding: 5px;
+  border: 2px solid blue;
+}
+
+table {
+  width: 100%;
+}
+
+.article {
+  width: 31%;
+  float: left;
+  margin: 5px;
+}
+
+.mini-profile {
+}
+
+.wtf-module {
+}
+
+.trends {
+}

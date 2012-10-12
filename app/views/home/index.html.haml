@@ -1,0 +1,55 @@
+%h1 Home Page
+
+.dashboard
+  .mini-profile.dashboard-module
+    = link_to @user.email, 'users/user_page'
+
+    - if @user.photo.nil?
+      %div
+        You don't have any photo
+        %br
+        = link_to "Add photo", controller: "users", action: "new_photo"
+    - else
+      %div
+        = image_tag(@user.photo.image_path, size: '100x100')
+        %br
+        = link_to "Change photo", controller: "users", action: "new_photo"
+        %br
+        Hello! Nice to meet you!
+
+  .wtf-module.dashboard-module
+    Events are expected soon:
+    %br
+    opening a bookstore
+    %br
+    closing a bookstore
+
+  .trends.dashboard-module
+    Your friends in a book club:
+    %br
+    You don't have any friends...
+
+.content-main
+  - if @user.books
+
+    - @books.each do |book|
+      .article
+        - if book.photo
+          = image_tag(book.photo.image_path, size: '100x100')
+        %br
+        = link_to(book.title, "/books/#{book.id}")
+        %br
+        = book.author
+        %br
+        = book.description
+        %br
+        = book.price
+        %br
+        = link_to 'Show', book
+        = link_to 'Edit', edit_book_path(book)
+        = link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+  - else
+    %div
+      You don't have any books yet
+
+  = link_to "Add new book", controller: "books", action: "new"
