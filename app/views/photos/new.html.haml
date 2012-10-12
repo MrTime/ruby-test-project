@@ -1,0 +1,11 @@
+= form_tag({}, :name => "upload" , :method => "POST" , :multipart => true) do
+  = file_field_tag 'photo'
+  %br
+  - if params.has_key?("id")
+    = hidden_field_tag(:book_id, "#{@book.id}")
+  = submit_tag 'upload'
+.container
+  .progress.progress-striped.active
+    .bar{:style => "width: 0%;"}
+#log Progress status
+= javascript_include_tag "upload"
