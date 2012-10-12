@@ -1,0 +1,37 @@
+%p#notice= notice
+- unless  @book.photo.nil?
+  =image_tag @book.photo.image_path
+%p
+  %b Author:
+  = @book.author
+%p
+  %b All Author:
+  = @book.authors.collect(&:author).join(", ")
+%p
+  %b Title:
+  = @book.title
+%p
+  %b Description:
+  = @book.description
+%p
+  %b Price:
+  = price @book.price
+%p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
+%p
+  %b Added by:
+  = @book.owner_login
+  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
+= link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Add photo', controller: "books", action: "new_photo"
+|
+\#{link_to 'Back', books_path}

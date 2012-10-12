@@ -4,8 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.string :title
       t.text :description
-      t.decimal :price
-
+      t.decimal :price, precision: 10, scale: 2
       t.timestamps
     end
   end
