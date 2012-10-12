@@ -18,4 +18,5 @@ tmp/*
 *.swp
 *.out
 /app/assets/images/*
+*.sqlite3
 coverage
