@@ -17,6 +17,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    puts "Updating!"
   end
+
 end
