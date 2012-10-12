@@ -9,6 +9,8 @@ gem 'devise', '2.1.2'
 
 group :development, :test do
   gem 'mysql2', '0.3.11'
+  gem 'rspec', '2.11.0'
+  gem 'simplecov', require: false
 end
 
 # Gems used only for assets and not required
