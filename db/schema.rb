@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20121009122440) do
     t.string   "title"
     t.text     "description"
     t.decimal  "price",       :precision => 10, :scale => 2
-    t.string   "key_word"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.string   "owner_login"
