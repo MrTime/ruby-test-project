@@ -17,7 +17,7 @@ loadDataFromServer = ->
         console.log 'Error loading data...'
   
   book_id = (url.match /books\/\d+/)[0].match /\d+/ 
-  alert book_id   
+  alert book_id
   req.open('GET', '/books/rate/' + rating  + "?book_id=" + book_id, true)
   req.send()
 

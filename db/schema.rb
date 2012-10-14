@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010193752) do
+ActiveRecord::Schema.define(:version => 20121014072929) do
 
   create_table "books", :force => true do |t|
     t.string   "author"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20121010193752) do
     t.datetime "updated_at",                                 :null => false
     t.string   "owner_login"
     t.integer  "user_id"
+    t.integer  "rate"
   end
 
   create_table "photos", :force => true do |t|

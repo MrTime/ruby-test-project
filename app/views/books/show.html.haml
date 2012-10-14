@@ -19,7 +19,7 @@
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 
 
-- if @rate
+- if @rate != nil
   %span.badge.badge-success 
     Rating: 
     =@rate

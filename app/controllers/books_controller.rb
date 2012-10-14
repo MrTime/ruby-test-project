@@ -20,13 +20,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     user_id = current_user.id
-    book_id = params[:book_id]
-    rating = Rate.where("user_id = ? AND book_id = ?", user_id, book_id)
-    
-    middel = middle_mark params[:id]
-    
-    if rating.empty?
-      @rate = middel
+    rating = Rate.where("user_id = ? AND book_id = ?", user_id, params[:id])
+
+    if rating.empty? 
+      @rate = @book.rate
     end  
 
     respond_to do |format|
@@ -57,6 +54,7 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
     @book.user_id = current_user.id
     @book.owner_login = current_user.email
+    @book.rate = 0
 
     respond_to do |format|
       if @book.save
@@ -122,14 +120,24 @@ class BooksController < ApplicationController
     rating = Rate.where("user_id = ? AND book_id = ?", user_id, book_id)
 
     if rating.empty?
-      @rate = Rate.new
-      @rate.rate = params[:id]
-      @rate.book_id = book_id
-      @rate.user_id = user_id
-      @rate.save
-      response =  middle_mark book_id
+      rate = Rate.new
+      rate.rate = params[:id]
+      rate.book_id = book_id
+      rate.user_id = user_id
+      rate.save
+
+      #Calculates the average assessment
+      middle = middle_mark book_id
+      
+      book = Book.find(book_id)
+      book.rate = middle
+      book.save
+
+      response =  middle
     else
-      response = 'You have already rate this book'
+      book = Book.find(book_id)
+      
+      response = book.rate #'You have already rate this book'
     end
 
     render :json => response
@@ -142,6 +150,7 @@ class BooksController < ApplicationController
      redirect_to("/users/sign_in") unless user_signed_in?
   end
 
+  #Calculates the average assessment
   def middle_mark book_id
     ratings = Rate.where("book_id = ?", book_id)
 
@@ -151,6 +160,7 @@ class BooksController < ApplicationController
       ratings.each do |rate|
         sum += rate.rate.to_i
       end  
+
 
       return sum/ratings.size  
     end  
