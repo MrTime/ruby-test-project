@@ -12,7 +12,9 @@ class BooksController < ApplicationController
     elsif @kind.to_i == 2
       @books = @books.sort_by!{|b| b.price}
     elsif @kind.to_i == 3
-      @books = @books.sort_by!{|b| b.star}
+      @books = @books.sort_by!{|b| b.rate}
+    elsif @kind.to_i == 4
+      @books = @books.sort_by!{|b| b.comment.size}.reverse
     end
       
       
