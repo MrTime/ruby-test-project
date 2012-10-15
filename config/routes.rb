@@ -1,10 +1,14 @@
 RubyTestProject::Application.routes.draw do
-  #get "home/index"
-
-  root :to => 'home#index' #home page
-
   devise_for :users,:controllers => { :registrations => "registrations" }
 
+  get "pages/help"
+  get "pages/home"
+  get "pages/about"
+  get "pages/contact"
+  get "pages/news"
+  root :to => 'home#index' #home page
+
+  resources :comments
   resources :users, :sign_up do
     resources :photos
   end
