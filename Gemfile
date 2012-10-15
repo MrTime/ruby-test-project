@@ -7,7 +7,11 @@ gem 'devise', '2.1.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '0.3.11'
+group :development, :test do
+  gem 'mysql2', '0.3.11'
+  gem 'rspec', '2.11.0'
+  gem 'simplecov', require: false
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,3 +42,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :production do
+  gem 'pg'
+  gem 'activerecord-postgresql-adapter'
+end
