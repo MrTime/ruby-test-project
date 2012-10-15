@@ -1,8 +1,18 @@
 %p#notice= notice
-=image_tag @book.photo.image_path
+- if @book.photo.nil?
+  %div
+    = image_tag('/assets/default/default-book.png')
+    %div/
+- else
+  %div
+    = image_tag(@book.photo.image_path)
+    %div/
 %p
   %b Author:
   = @book.author
+%p
+  %b All Author:
+  = @book.authors.collect(&:author).join(", ")
 %p
   %b Title:
   = @book.title
@@ -11,9 +21,46 @@
   = @book.description
 %p
   %b Price:
-  = @book.price
+  = price @book.price
+%p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
+%p
+  %b Added by:
+  = @book.owner_login
+  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
 = link_to 'Edit', edit_book_path(@book)
 |
-= link_to 'Add photo', controller: "books", action: "new_photo"
-|
+
 \#{link_to 'Back', books_path}
+%p
+  %b All comments:
+  %br
+  - @book.comments.each do |comment|
+    %table
+
+    %tr
+      %td=comment.user.email
+    %tr
+
+    %tr
+      %td=comment.created_at
+
+      %br
+
+      %td=comment.content
+      %br/
+%p
+  =form_tag :controller => "comments", :actions => "create" do
+    =text_area_tag :content, "", :size=>'80x5'
+    =text_field_tag :book_id, @book.id, :style => "display: none;"
+    =submit_tag "Add Comment"
+
+  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
