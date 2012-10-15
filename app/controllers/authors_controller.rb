@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   # List unique authors /authors/list_authors
-  def list_authors
+  def index
     @books = Book.select(:author).uniq
 
     respond_to do |format|
@@ -17,6 +17,6 @@ class AuthorsController < ApplicationController
       format.html # list_authors.html.erb
       format.json { render json: @books }
     end
-  end	
+  end
 
 end

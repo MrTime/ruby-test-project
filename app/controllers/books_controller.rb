@@ -28,6 +28,8 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
+    #For uploading images
+    @photo = Photo.new
     @book = Book.new
     @book.authors.build
     respond_to do |format|
@@ -38,6 +40,8 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    #For uploading images
+    @photo = Photo.new
     @book = Book.find(params[:id])
     @book.authors.build
   end
@@ -86,25 +90,6 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url }
       format.json { head :no_content }
     end
-  end
-
-  def new_photo
-   @photo = Photo.new
-   @book = Book.find(params[:id])
-  end
-
-  def add_photo
-    @book = Book.find(params[:photo][:book_id])
-    uploaded_io = params[:photo][:picture]
-      File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
-        file.write(uploaded_io.read)
-      end
-      @photo  = Photo.new
-      @photo.book_id = @book.id
-      @photo.save
-      @photo.image_path  =  uploaded_io.original_filename
-      @photo.save
-      redirect_to("/books/#{params[:photo][:book_id]}")
   end
 
   private
