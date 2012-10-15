@@ -12,7 +12,7 @@ class BooksController < ApplicationController
         @books = Book.find(:all, :conditions => {:isbn => @search})
       end
     end
-
+ 
     @sbooks = Book.all
     @kind = params[:kind]
 #    @rates = Rate.all
@@ -46,6 +46,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+
     @current_id = params[:id]
     @sbooks = Book.all
     @keys = []
@@ -80,7 +81,15 @@ class BooksController < ApplicationController
     end
 # Deleting book owner of show_page
     @books.delete_if {|b| b.id.to_i == @current_id.to_i}    
-      respond_to do |format|
+
+    @rate = false
+    rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+
+    if !rating.empty? 
+      @rate = true
+    end  
+
+    respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
     end
@@ -153,10 +162,54 @@ class BooksController < ApplicationController
     end
   end
 
+  def rate
+    user_id = current_user.id
+    book_id = params[:book_id]
+    rating = Rate.where("user_id = ? AND book_id = ?", user_id, book_id)
+
+    if rating.empty?
+      rate = Rate.new
+      rate.rate = params[:id]
+      rate.book_id = book_id
+      rate.user_id = user_id
+      rate.save
+
+      #Calculates the average assessment
+      middle = middle_mark book_id
+      
+      book = Book.find(book_id)
+      book.middle_rate = middle
+      book.save
+
+      response =  middle
+    else
+      book = Book.find(book_id)
+      
+      response = book.middle_rate #'You have already rate this book'
+    end
+
+    render :json => response
+      
+  end
+
   private
 
   def authenticate
      redirect_to("/users/sign_in") unless user_signed_in?
   end
 
+  #Calculates the average assessment
+  def middle_mark book_id
+    ratings = Rate.where("book_id = ?", book_id)
+
+    if !ratings.empty?
+      sum = 0
+
+      ratings.each do |rate|
+        sum += rate.rate.to_i
+      end  
+
+      return sum/ratings.size  
+    end  
+  end 
 end

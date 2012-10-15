@@ -39,10 +39,29 @@
   = @book.owner_login
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 
+
+- if @rate 
+  %span.badge.badge-success 
+    Rating: 
+    =@book.middle_rate
+  %br
+- else 
+  .btn-toolbar#button_rate
+    .btn-group
+      .btn#1 1
+      .btn#2 2
+      .btn#3 3
+      .btn#4 4
+      .btn#5 5
+
+%span.badge.badge-success#visible_rate  
+%br
+
 = link_to 'Edit', edit_book_path(@book)
 |
 
 \#{link_to 'Back', books_path}
+
 %p
   %b All comments:
   %br
@@ -94,3 +113,6 @@
       %td= book.keyword
       %td= book.owner_login
       %td= link_to 'Show detail information', book
+
+=javascript_include_tag "rate_request"
+
