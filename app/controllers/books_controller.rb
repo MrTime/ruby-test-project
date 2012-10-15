@@ -20,21 +20,24 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @current_id = params[:id]
     @sbooks = Book.all
-    @show_book_keys = @book.keyword.split(" ")
     @keys = []
     h = Hash.new
     @boo = []
     @final_keys = []
     @books = []
+    if @book.keyword != nil
+      @show_book_keys = @book.keyword.split(" ")
 
 # Search for similar books
     @sbooks.each do |b|
-      @keys = b.keyword.split(" ")
+      if b.keyword != nil
+        @keys = b.keyword.split(" ")
       @same_key = @keys&@show_book_keys
       if @same_key[0] != nil
         @boo.push(b.keyword)
         h[b.keyword] = @same_key.size
       end 
+      end
     end
 
 # Sorting similar books by amount of key words
@@ -44,9 +47,12 @@ class BooksController < ApplicationController
     @final_keys.each do |f|
       @books += Book.find(:all, :conditions => {:keyword => f})
     end
+    else 
+      @books = Book.all   
+    end
 # Deleting book owner of show_page
-  #  @books.delete_if {|b| b.id.to_i == @current_id.to_i}
-    respond_to do |format|
+    @books.delete_if {|b| b.id.to_i == @current_id.to_i}    
+      respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
     end
