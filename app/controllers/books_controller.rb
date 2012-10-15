@@ -25,13 +25,14 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @rate = false
-    rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+    if current_user != nil
+      @rate = false
+      rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
 
-    if !rating.empty? 
-      @rate = true
+      if !rating.empty? 
+        @rate = true
+      end  
     end  
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
