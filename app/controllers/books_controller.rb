@@ -59,7 +59,6 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
     @book.user_id = current_user.id
     @book.owner_login = current_user.email
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
