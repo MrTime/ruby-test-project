@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009122440) do
+ActiveRecord::Schema.define(:version => 20121011200019) do
+
+  create_table "authors", :force => true do |t|
+    t.text     "author"
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "books", :force => true do |t|
     t.string   "author"
@@ -25,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20121009122440) do
     t.integer  "isbn"
     t.string   "genre"
     t.integer  "year"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
