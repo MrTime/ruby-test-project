@@ -29,7 +29,7 @@ class BooksController < ApplicationController
   # GET /books/new.json
   def new
     @book = Book.new
-
+    @book.authors.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @book }
@@ -39,6 +39,7 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
+    @book.authors.build
   end
 
   # POST /books

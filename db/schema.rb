@@ -13,12 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20121009122440) do
 
+  create_table "authors", :force => true do |t|
+    t.text     "author"
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "books", :force => true do |t|
     t.string   "author"
     t.string   "title"
     t.text     "description"
     t.decimal  "price",       :precision => 10, :scale => 2
-    t.string   "key_word"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.string   "owner_login"
