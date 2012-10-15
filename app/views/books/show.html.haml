@@ -1,9 +1,18 @@
 %p#notice= notice
-- unless  @book.photo.nil?
-  =image_tag @book.photo.image_path
+- if @book.photo.nil?
+  %div
+    = image_tag('/assets/default/default-book.png')
+    %div/
+- else
+  %div
+    = image_tag(@book.photo.image_path)
+    %div/
 %p
   %b Author:
   = @book.author
+%p
+  %b All Author:
+  = @book.authors.collect(&:author).join(", ")
 %p
   %b Title:
   = @book.title
@@ -29,8 +38,7 @@
 
 = link_to 'Edit', edit_book_path(@book)
 |
-= link_to 'Add photo', controller: "books", action: "new_photo"
-|
+
 \#{link_to 'Back', books_path}
 %p
   %b All comments:

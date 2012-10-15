@@ -5,6 +5,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @search = params[:search]
+    
+    @books.each do |b|
+      if b.isbn == @search.to_i && @search !="" && @search !=nil
+        @books = Book.find(:all, :conditions => {:isbn => @search})
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +25,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
@@ -28,8 +35,10 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
+    #For uploading images
+    @photo = Photo.new
     @book = Book.new
-
+    @book.authors.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @book }
@@ -38,7 +47,10 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    #For uploading images
+    @photo = Photo.new
     @book = Book.find(params[:id])
+    @book.authors.build
   end
 
   # POST /books
@@ -85,25 +97,6 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url }
       format.json { head :no_content }
     end
-  end
-
-  def new_photo
-   @photo = Photo.new
-   @book = Book.find(params[:id])
-  end
-
-  def add_photo
-    @book = Book.find(params[:photo][:book_id])
-    uploaded_io = params[:photo][:picture]
-      File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
-        file.write(uploaded_io.read)
-      end
-      @photo  = Photo.new
-      @photo.book_id = @book.id
-      @photo.save
-      @photo.image_path  =  uploaded_io.original_filename
-      @photo.save
-      redirect_to("/books/#{params[:photo][:book_id]}")
   end
 
   private
