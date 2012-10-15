@@ -37,12 +37,11 @@
     = f.text_field :year
   .actions
     = f.submit
-    
-    .field
-      = label_tag "Authors" 
-      %br/
-      = f.fields_for :authors do |c| 
-        %br/
-        = c.text_field :author 
-        %br/
 
+    .field
+      = label_tag "Authors"
+      %br/
+      = f.fields_for :authors do |c|
+        %br/
+        = c.text_field :author
+        %br/

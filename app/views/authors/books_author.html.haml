@@ -1,11 +1,12 @@
-%h1
-  Books #{params[:author]}
+%h1 Books #{params[:author]}
+
 %table
   %tr
     %th Author
     %th Title
     %th Description
     %th Price
+
   - @books.each do |book|
     %tr
       %td= book.author

@@ -1,12 +1,10 @@
 %p#notice= notice
-- if @book.photo.nil?
+- if @book.photo
   %div
-    = image_tag('/assets/default/default-book.png')
-    %div/
+    = image_tag @book.photo.image_path
 - else
   %div
-    = image_tag(@book.photo.image_path)
-    %div/
+    = image_tag '/assets/default/default-book.png'
 %p
   %b Author:
   = @book.author
@@ -23,7 +21,7 @@
   %b Price:
   = price @book.price
 %p
-  %b Isbn:
+  %b ISBN:
   = @book.isbn
 %p
   %b Genre:
@@ -47,20 +45,20 @@
     %table
 
     %tr
-      %td=comment.user.email
+      %td= comment.user.email
     %tr
 
     %tr
-      %td=comment.created_at
-
+      %td= comment.created_at
       %br
 
-      %td=comment.content
-      %br/
+      %td= comment.content
+      %br
 %p
-  =form_tag :controller => "comments", :actions => "create" do
-    =text_area_tag :content, "", :size=>'80x5'
-    =text_field_tag :book_id, @book.id, :style => "display: none;"
-    =submit_tag "Add Comment"
+
+  = form_tag controller: "comments", actions: "create" do
+    = text_area_tag :content, "", size: '80x5'
+    = text_field_tag :book_id, @book.id, style: "display: none;"
+    = submit_tag "Add Comment"
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method

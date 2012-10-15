@@ -1,6 +1,6 @@
-- if @books && !@books.empty?
+- if @user && !@user.books.empty?
 
-  - @books.each do |book|
+  - @user.books.each do |book|
     .article
       - if book.photo
         %div

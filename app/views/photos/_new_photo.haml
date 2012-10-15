@@ -1,6 +1,6 @@
 %h2 Add Photo
 = form_for [item, @photo],  html: { multipart: true } do |f|
   = f.file_field :picture
-  %br/
+  %br
   = f.submit "Add"
 = link_to "Back", :back

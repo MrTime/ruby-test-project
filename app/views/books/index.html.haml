@@ -1,20 +1,8 @@
 %h1 Listing books
 
-.dashboard
-  - if user_signed_in?
-
-    = render 'home/mini_profile'
-    = render 'home/wtf_module'
-    = render 'home/trends'
-
-  - else
-
-    = render 'home/sign_in'
-    = render 'home/sign_up'
-
 = render 'books/content_main'
 
-= form_tag("/books/", :method => "get") do
+= form_tag("/books/", method: "get") do
   = label_tag(:search, "Search by ISBN:")
   = text_field_tag(:search)
   = submit_tag("Search")

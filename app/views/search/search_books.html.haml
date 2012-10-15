@@ -1,11 +1,6 @@
-<center><h2>Search result</h2><center>
-<% for book in @book %>  
-  
-
-   <%= link_to book.title, book%>
-  <%  end %> 
-  
-  
-  <%= "Book whith title #{params[:search_title]} not found  !!!" if @book.empty?%>
-<p>
-<%= link_to 'Back', search_path %>
+%h2 Search result
+- for book in @book
+  = link_to book.title, book
+= "Book whith title #{params[:search_title]} not found  !!!" if @book.empty?
+%p
+  = link_to 'Back', search_path
