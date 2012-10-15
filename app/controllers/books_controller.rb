@@ -25,7 +25,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-   
+    @rate = false
+    rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+
+    if !rating.empty? 
+      @rate = true
+    end  
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
@@ -59,6 +65,7 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
     @book.user_id = current_user.id
     @book.owner_login = current_user.email
+
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -98,10 +105,54 @@ class BooksController < ApplicationController
     end
   end
 
+  def rate
+    user_id = current_user.id
+    book_id = params[:book_id]
+    rating = Rate.where("user_id = ? AND book_id = ?", user_id, book_id)
+
+    if rating.empty?
+      rate = Rate.new
+      rate.rate = params[:id]
+      rate.book_id = book_id
+      rate.user_id = user_id
+      rate.save
+
+      #Calculates the average assessment
+      middle = middle_mark book_id
+      
+      book = Book.find(book_id)
+      book.middle_rate = middle
+      book.save
+
+      response =  middle
+    else
+      book = Book.find(book_id)
+      
+      response = book.middle_rate #'You have already rate this book'
+    end
+
+    render :json => response
+      
+  end
+
   private
 
   def authenticate
      redirect_to("/users/sign_in") unless user_signed_in?
   end
 
+  #Calculates the average assessment
+  def middle_mark book_id
+    ratings = Rate.where("book_id = ?", book_id)
+
+    if !ratings.empty?
+      sum = 0
+
+      ratings.each do |rate|
+        sum += rate.rate.to_i
+      end  
+
+      return sum/ratings.size  
+    end  
+  end 
 end

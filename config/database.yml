@@ -15,7 +15,7 @@ development:
   database: database_mysql_development
   pool: 5
   username: root
-  password: locisvv 
+  password: locisvv
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
