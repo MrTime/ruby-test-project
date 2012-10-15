@@ -36,20 +36,21 @@
 
 tr th {
   padding: 5px;
-  border: 2px solid red;
+  border: 1px solid black;
 }
 
 td {
   padding: 5px;
-  border: 2px solid blue;
+  border: 1px solid black;
 }
 
 table {
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 
 .article {
-  width: 31%;
+  width: 31.5%;
   float: left;
   margin: 5px;
 }
@@ -61,4 +62,12 @@ table {
 }
 
 .trends {
+}
+
+.sign-in {
+  padding: 20px;
+}
+
+.sign-up {
+  padding: 20px;
 }
