@@ -4,9 +4,10 @@ class BooksController < ApplicationController
    before_filter :authenticate, :except => [:index, :show]
 
   def index
+    @user = current_user
     @books = Book.all
     @search = params[:search]
-    
+
     @books.each do |b|
       if b.isbn == @search.to_i && @search !="" && @search !=nil
         @books = Book.find(:all, :conditions => {:isbn => @search})
@@ -25,7 +26,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-   
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }

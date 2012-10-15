@@ -1,37 +1,22 @@
 %h1 Listing books
-%table
-  %tr
-    %th Author
-    %th Title
-    %th Description
-    %th Price
-    %th Isbn
-    %th Genre
-    %th Year
-    %th Added by
-    %th
-    %th
-    %th
-  - @books.each do |book|
-    %tr
-      %td= book.author
-      %td= book.title
-      %td= book.description
-      %td= price book.price
-      %td= book.isbn
-      %td= book.genre
-      %td= book.year
-      %td= book.owner_login
-      %td= link_to 'Show detail information', book
-      %td= book.authors.collect(&:author).join(", ")
-      
-//      %td= link_to 'Edit', edit_book_path(book)
-//      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+
+.dashboard
+  - if user_signed_in?
+
+    = render 'home/mini_profile'
+    = render 'home/wtf_module'
+    = render 'home/trends'
+
+  - else
+
+    = render 'home/sign_in'
+    = render 'home/sign_up'
+
+= render 'books/content_main'
 
 = form_tag("/books/", :method => "get") do
   = label_tag(:search, "Search by ISBN:")
   = text_field_tag(:search)
   = submit_tag("Search")
-  
+
 = link_to 'New Book', new_book_path

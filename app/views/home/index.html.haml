@@ -1,0 +1,15 @@
+%h1 Home Page
+
+.dashboard
+  - if user_signed_in?
+
+    = render 'home/mini_profile'
+    = render 'home/wtf_module'
+    = render 'home/trends'
+
+  - else
+
+    = render 'home/sign_in'
+    = render 'home/sign_up'
+
+= render 'home/content_main'
