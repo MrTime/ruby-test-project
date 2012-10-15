@@ -1,5 +1,6 @@
 %h1 Editing book
 = render 'form'
+= render "/photos/new_photo", item: @book
 = link_to 'Show', @book
 |
 \#{link_to 'Back', books_path}

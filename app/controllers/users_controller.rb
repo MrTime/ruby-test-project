@@ -1,14 +1,21 @@
 class UsersController < ApplicationController
 
-  def user_page
-    if user_signed_in?
-      @user = current_user
-    else
-      redirect_to("/users/sign_in")
-    end
+  def show
+    user = User.find params[:id]
+    @user = user.confirmed_at.nil? ? nil : user
+   # if @user
+
+   # if user_signed_in?
+   #   @user = current_user
+   # else
+   #   redirect_to("/users/sign_in")
+  #  end
   end
 
-  def successful_registration
+  def edit
+    @user = current_user
   end
 
-end	
+  def update
+  end
+end
