@@ -30,17 +30,24 @@ ul{
     list-style: none;
 }
 .text{
-    font-family: Verdana, Arial, Helvetica, sans-serif; /* Гарнитура текста */
-    font-size: 14px; /* Размер шрифта в пикселях */
-    font-style: italic; /* Начертание шрифта */
-    font-weight: 800; /* Насыщенность шрифта */
-    text-align:  left  /* выравнивание текста */
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 800;
+    text-align:  left
 
 }
-.text1{
-    font-family: Verdana, Arial, Helvetica, sans-serif; /* Гарнитура текста */
-    font-size: 12px; /* Размер шрифта в пикселях */
-    font-style: italic; /* Начертание шрифта */
-    font-weight: 600; /* Насыщенность шрифта */
-    text-align:  left  /* выравнивание текста */
 
+.text2{
+        font-family: Verdana, Colibri, Helvetica, sans-serif;
+        font-size: 19px;
+        font-style: italic;
+        font-weight: 600;
+        text-align:  left
+}
+.text3{
+    font-family: Verdana, Colibri, Helvetica, sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 600;
+    text-align:  left

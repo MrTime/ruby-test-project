@@ -4,16 +4,12 @@
   =image_tag @book.photo.image_path, :class => "image_book"
  
 %HR/
-
+%p.text2
+  %b.text
+  = @book.title
 %p.text1
   %b.text Author:
   = @book.author
-%p.text1
-  %b.text Title:
-  = @book.title
-%p.text1
-  %b.text Description:
-  = @book.description
 %p.text1
   %b.text Price:
   = price @book.price
@@ -23,8 +19,13 @@
 
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
-  %HR/
 
+
+  %HR/
+%p.text3
+  %b.text Description:
+  = @book.description
+  %HR/
 = link_to 'Edit', edit_book_path(@book)
 |
 = link_to 'Add photo', controller: "books", action: "new_photo"
