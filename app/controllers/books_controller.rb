@@ -28,8 +28,10 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
+    #For uploading images
+    @photo = Photo.new
     @book = Book.new
-
+    @book.authors.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @book }
@@ -38,7 +40,10 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    #For uploading images
+    @photo = Photo.new
     @book = Book.find(params[:id])
+    @book.authors.build
   end
 
   # POST /books

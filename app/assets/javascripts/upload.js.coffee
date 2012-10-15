@@ -19,7 +19,11 @@ form.onsubmit = ->
 
 token = document.forms.upload.elements["authenticity_token"]
 book_id = document.getElementById("book_id")
-
+user_id = document.getElementById("user_id")
+if book_id != null
+  path = "/books/#{book_id.value}/photos"
+else
+  path = "/users/#{user_id.value}/photos"
 
 upload = (file, onSuccess, onError, onProgress) ->
   xhr = new XMLHttpRequest()
@@ -31,7 +35,7 @@ upload = (file, onSuccess, onError, onProgress) ->
     if book_id != null
       window.location = "/books/" + book_id.value
     else   
-      window.location = "/users/user_page"
+      window.location = "/users/#{user_id.value}"
   
   xhr.upload.onprogress = (event) ->
     $(document).ready -> 
@@ -42,7 +46,7 @@ upload = (file, onSuccess, onError, onProgress) ->
       onProgress event.loaded, event.total
       
  
-  xhr.open "POST", "/photos/add", true
+  xhr.open "POST", path, true
   formData = new FormData()
   formData.append "authenticity_token", token.value
   if book_id != null
