@@ -20,3 +20,4 @@ tmp/*
 /app/assets/images/*
 !/app/assets/images/default
 *.sqlite3
+coverage
