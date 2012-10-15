@@ -1,16 +1,18 @@
 %p#notice= notice
 - if @book.photo.nil?
   %div
-    =image_tag('/assets/default/default-book.png')
+    = image_tag('/assets/default/default-book.png')
     %div/
 - else
   %div
-    =image_tag @book.photo.image_path
+    = image_tag(@book.photo.image_path)
     %div/
-
 %p
   %b Author:
   = @book.author
+%p
+  %b All Author:
+  = @book.authors.collect(&:author).join(", ")
 %p
   %b Title:
   = @book.title
@@ -20,6 +22,15 @@
 %p
   %b Price:
   = price @book.price
+%p
+  %b Isbn:
+  = @book.isbn
+%p
+  %b Genre:
+  = @book.genre
+%p
+  %b Year:
+  = @book.year
 %p
   %b Added by:
   = @book.owner_login
