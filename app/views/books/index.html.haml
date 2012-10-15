@@ -11,6 +11,7 @@
     %th Added by
     %th
     %th
+    %th
   - @books.each do |book|
     %tr
       %td= book.author
@@ -22,10 +23,17 @@
       %td= book.year
       %td= book.owner_login
       %td= link_to 'Show detail information', book
-
+      %td= book.authors.collect(&:author).join(", ")
+      
 //      %td= link_to 'Edit', edit_book_path(book)
 //      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
+
+= form_tag("/books/", :method => "get") do
+  = label_tag(:search, "Search by ISBN:")
+  = text_field_tag(:search)
+  = submit_tag("Search")
+  
 = link_to 'New Book', new_book_path
 
 = form_tag("/books/", :method=>'get' ) do
