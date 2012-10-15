@@ -5,6 +5,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @search = params[:search]
+    
+    @books.each do |b|
+      if b.isbn == @search.to_i && @search !="" && @search !=nil
+        @books = Book.find(:all, :conditions => {:isbn => @search})
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +25,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
@@ -31,7 +38,7 @@ class BooksController < ApplicationController
     #For uploading images
     @photo = Photo.new
     @book = Book.new
-
+    @book.authors.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @book }
@@ -43,6 +50,7 @@ class BooksController < ApplicationController
     #For uploading images
     @photo = Photo.new
     @book = Book.find(params[:id])
+    @book.authors.build
   end
 
   # POST /books
