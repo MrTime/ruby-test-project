@@ -1,6 +1,13 @@
 %p#notice= notice
-- unless  @book.photo.nil?
-  =image_tag @book.photo.image_path
+- if @book.photo.nil?
+  %div
+    = image_tag('/assets/default/default-book.png')
+    %div/
+- else
+  %div
+    = image_tag(@book.photo.image_path)
+    %div/
+      
 %p
   %b Author:
   = @book.author
