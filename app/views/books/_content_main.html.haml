@@ -1,0 +1,16 @@
+.content-main
+  - @books.each do |book|
+    .article
+      - if book.photo
+        = image_tag(book.photo.image_path, size: '100x100')
+      - else
+        = image_tag('/assets/default/default-book.png', size: '100x100')
+      %br
+      = link_to(book.title, "/books/#{book.id}")
+      %br
+      = book.author
+      %br
+      = book.description
+      %br
+      = book.price
+      %br
