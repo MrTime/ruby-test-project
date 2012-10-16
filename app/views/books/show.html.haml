@@ -34,17 +34,14 @@
   = @book.owner_login
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 
-%br
-.fb-like{"data-send"       => "false",
-         "data-width"      => "450",
-         "data-show-faces" => "true",
-         "data-action"     => "recommend"}
-%br
-
 = link_to 'Edit', edit_book_path(@book)
 |
 \#{link_to 'Back', books_path}
 %br
+%br
+= render 'books/buy_now'
+= render 'books/add_to_cart'
+= render 'books/fb_like'
 
 %p
   %b All comments:
