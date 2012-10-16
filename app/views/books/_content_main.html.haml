@@ -5,6 +5,8 @@
       - if book.photo
         %div
           = image_tag book.photo.image_path, size: '100x100'
+          %br
+          %br
       - else
         %div
           = image_tag '/assets/default/default-book.png', size: '100x100'
