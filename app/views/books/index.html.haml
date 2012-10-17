@@ -1,4 +1,7 @@
-%h1 Listing books
+
+= form_tag("/books/", :method=>'get' ) do
+  = label_tag(:kind, "Sort by: ")
+  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { :onchange => "this.form.submit();"})
 
 = render 'books/content_main'
 
