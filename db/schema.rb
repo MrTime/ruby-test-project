@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015210558) do
+ActiveRecord::Schema.define(:version => 20121017064850) do
 
   create_table "authors", :force => true do |t|
     t.text     "author"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20121015210558) do
     t.string   "genre"
     t.integer  "year"
     t.integer  "middle_rate"
+    t.string   "keyword"
   end
 
   create_table "comments", :force => true do |t|
