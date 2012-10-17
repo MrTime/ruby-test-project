@@ -13,10 +13,6 @@ class SearchController < ApplicationController
       search.flatten!
       search = search.join("|")
     end
-
-
-
     @book=Book.where('title RLIKE ? or author RLIKE ? or description RLIKE ? or price RLIKE ?', search, search, search, search).all
-
   end
 end
