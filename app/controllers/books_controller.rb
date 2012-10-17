@@ -21,15 +21,7 @@ class BooksController < ApplicationController
     elsif @kind.to_i == 2
       @books = @books.sort_by!{|b| b.price}
     elsif @kind.to_i == 3
-      @books = []
-      @rates = @rates.sort_by!{|r| r.rate}.reverse
-      @rates.each do |r|
-        @sbooks.each do |b|
-          if r.book_id == b.id 
-            @books.push(b)
-          end  
-        end 
-      end
+      @books = @books.sort_by!{|b| b.middle_rate}.reverse
     elsif @kind.to_i == 4
       @books = @books.sort_by!{|b| b.comments.size}.reverse
     end
