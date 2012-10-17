@@ -1,11 +1,16 @@
 class CommentsController < ApplicationController
 
   def create
+    @book = Book.find(params[:book_id])
+    @book_id = params[:book_id]
+    @user = User.find(@book.user_id)
+    @email = @user.email
     @comment = Comment.new
     @comment.content = params[:content]
     @comment.user_id = current_user.id
     @comment.book_id = params[:book_id].to_i
-    if @comment.save
+      if @comment.save
+      UserMailer.send_comment(@user, @comment, @email, @book_id).deliver
       redirect_to :back
     end
   end
