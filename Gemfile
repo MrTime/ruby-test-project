@@ -40,8 +40,11 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :production do
-  gem 'pg'
-  gem 'activerecord-postgresql-adapter'
+#  gem 'pg'
+#  gem 'activerecord-postgresql-adapter'
 end
