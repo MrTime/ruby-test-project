@@ -40,12 +40,5 @@
   = submit_tag("Search")
   
 = link_to 'New Book', new_book_path
-
-%table
-  %tr
-    %th Genre
-- @books.each do |book|
-  %p.list
-    %a{:href => "http://localhost:3000/books/#{book.id}"}
-      = book.id
-      \. #{book.genre} 
+%br/
+= link_to 'Genre page', "/genres"
