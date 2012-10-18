@@ -2,6 +2,7 @@
 %html
   %head
     %title= full_title(yield(:title))
+
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
  
@@ -21,8 +22,8 @@
           = render 'layouts/wtf_module'
           = render 'layouts/trends'
         - else
-          = render 'layouts/sign_in'
-          = render 'layouts/sign_up'
+          / = render 'layouts/sign_in'
+          / = render 'layouts/sign_up'
       .content-main
         = yield
       = render 'layouts/footer'

@@ -1,14 +1,14 @@
-
+  
 = form_tag("/books/", :method=>'get' ) do
   = label_tag(:kind, "Sort by: ")
   = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { :onchange => "this.form.submit();"})
 
-= render 'books/content_main'
-
-= form_tag("/books/", method: "get") do
+= form_tag("/books/", method: "get", :class => "form-search") do
   = label_tag(:search, "Search by ISBN:")
   = text_field_tag(:search)
-  = submit_tag("Search")
+  = submit_tag("Search", :class => "btn")
 
-= link_to 'New Book', new_book_path
+= render 'books/content_main'
+
+= link_to 'New Book', new_book_path, :class => "btn btn-large disabled"
 = render 'books/donate'

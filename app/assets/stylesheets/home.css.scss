@@ -3,22 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .dashboard {
-  height: 737px;
-  width: 310px;
-  margin: 0 15px 0 0;
-  float: left;
+
 }
 
 .dashboard-module {
-  margin: 0 15px 15px 0;
 
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-
-  background-color: #f9f9f9;
-  padding: 12px;
-//  cursor: pointer;
 }
 
 .content-main {
@@ -26,35 +15,50 @@
   padding: 12px;
   background-color: #f9f9f9;
 
-  float: right;
-  width: 576px;
+  width: 900px;
 
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+
 }
 
 tr th {
-  padding: 5px;
-  border: 1px solid black;
+
 }
 
 td {
-  padding: 5px;
-  border: 1px solid black;
+
 }
 
 table {
-  width: 80%;
-  margin: auto;
+
+}
+      
+.article-wrap {
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #EEEEEE;
+  width: 200px;
+  margin: 5px; 
 }
 
 .article {
-  width: 31.5%;
-  float: left;
-  margin: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  height: 300px;  
+  padding: 5px;
 }
+ul {
+  list-style: none outside none;
+}
+li {
+  display: inline;
+  float: left
+}
+.image_book {
 
+}
 .mini-profile {
 }
 
@@ -65,9 +69,9 @@ table {
 }
 
 .sign-in {
-  padding: 20px;
+
 }
 
 .sign-up {
-  padding: 20px;
+
 }
