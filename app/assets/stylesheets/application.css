@@ -11,3 +11,65 @@
  *= require_self
  *= require_tree .
  */
+.text6{
+font-family: 'Comic Sans MS', cursive;
+font-size: 1.3em;
+color: #000000;
+font-style: italic;
+text-align: left;
+line-height: 33%;
+letter-spacing: 0.05em;
+}
+.text5{
+font-family: 'Comic Sans MS', cursive;
+font-size: 1.3em;
+color: #C7C7C7;
+font-weight: bold;
+font-style: italic;
+text-align: left;
+line-height: 33%;
+letter-spacing: 0.05em;
+}
+.edit{
+    list-style-type: none;
+}
+
+.image_book{
+   width: 200px;
+   height: 250px;
+    float: left;
+    margin: 5px;
+}
+.book_info{
+    float: left;
+}
+ul{
+    list-style: none;
+}
+.text{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 800;
+    text-align:  left
+
+}
+.text1{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 600;
+    text-align:  left
+}
+.text3{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 19px; /* Размер шрифта в пикселях */
+    font-style: italic; /* Начертание шрифта */
+    font-weight: 800; /* Насыщенность шрифта */
+    text-align:  left  /* выравнивание текста */
+}
+
+/*.comments tr td{
+    border: 1px solid #ff0000;
+    width: 250px;
+}

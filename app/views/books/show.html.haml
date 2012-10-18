@@ -1,66 +1,82 @@
 %p#notice= notice
 - if @book.photo.nil?
-  %div
-    = image_tag('/assets/default/default-book.png')
-    %div/
+
 - else
+
   %div
-    = image_tag(@book.photo.image_path)
+    = image_tag @book.photo.image_path, :class => "image_book"
     %div/
-%p
-  %b Author:
-  = @book.author
-%p
-  %b All Author:
-  = @book.authors.collect(&:author).join(", ")
-%p
-  %b Title:
+  %HR
+%p.text3
+  %b.book_info
   = @book.title
-%p
-  %b Description:
-  = @book.description
-%p
-  %b Price:
+%HR
+%p.text1
+  %b.text5 Author:
+  = @book.author
+%p.text1
+  %b.text5 Price:
   = price @book.price
-%p
-  %b Isbn:
+%p.text1
+  %b.text5 Isbn:
   = @book.isbn
-%p
-  %b Genre:
+%p.text1
+  %b.text5 Genre:
   = @book.genre
-%p
-  %b Year:
+%p.text1
+  %b.text5 Year:
   = @book.year
-%p
-  %b Added by:
+%p.text1
+  %b.text5 Keyword:
+  = @book.keyword
+%p.text1
+  %b.text5 Added by:
   = @book.owner_login
+%HR
+%p.text6
+  %b
+  = @book.description
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+%HR
+
+- if @rate 
+  %span.badge.badge-success 
+    Rating: 
+    =@book.middle_rate
+  %br
+- else 
+  .btn-toolbar#button_rate
+    .btn-group
+      .btn#1 1
+      .btn#2 2
+      .btn#3 3
+      .btn#4 4
+      .btn#5 5
+
+%span.badge.badge-success#visible_rate  
+%br
 
 = link_to 'Edit', edit_book_path(@book)
 |
+%a.btn{:href => "/books"} Back
 
-\#{link_to 'Back', books_path}
+=form_tag ({:controller => "comments", :actions => "create"}, :remote => true) do
+  =text_area_tag :content, "", :size=>'80x5'
+  =text_field_tag :book_id, @book.id, :style => "display: none;"
+  =submit_tag "Add Comment"
 %p
   %b All comments:
   %br
-  - @book.comments.each do |comment|
-    %table
-
-    %tr
-      %td=comment.user.email
-    %tr
-
-    %tr
-      %td=comment.created_at
-
-      %br
-
-      %td=comment.content
-      %br/
+  %table.comments
+    - @book.comments.desc.each do |comment|
+      %tr
+        %td=comment.user.email
+        %td=comment.created_at
+        %td=comment.content
+        %td=button_to "X", comment_path(comment), :method => :delete
 %p
-  =form_tag :controller => "comments", :actions => "create" do
-    =text_area_tag :content, "", :size=>'80x5'
-    =text_field_tag :book_id, @book.id, :style => "display: none;"
-    =submit_tag "Add Comment"
+
+
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
