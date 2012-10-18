@@ -12,10 +12,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: database_mysql_development
+  database: development
   pool: 5
   username: root
-  password:
+  password: "1234"
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
