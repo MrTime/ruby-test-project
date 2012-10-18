@@ -17,6 +17,7 @@
   %b Added by:
   = @book.owner_login
 
+= button_to 'Add To Cart', line_items_path(book_id: @book.id), remote: false
 
 = link_to 'Edit', edit_book_path(@book)
 |

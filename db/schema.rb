@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011200019) do
+ActiveRecord::Schema.define(:version => 20121018190213) do
+
+  create_table "authors", :force => true do |t|
+    t.text     "author"
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "books", :force => true do |t|
     t.string   "author"
@@ -22,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20121011200019) do
     t.datetime "updated_at",                                 :null => false
     t.string   "owner_login"
     t.integer  "user_id"
+    t.integer  "isbn"
+    t.string   "genre"
+    t.integer  "year"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -32,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20121011200019) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "line_items", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "quantity",   :default => 1
+  end
+
   create_table "photos", :force => true do |t|
     t.string   "image_path"
     t.integer  "user_id"
@@ -39,6 +62,16 @@ ActiveRecord::Schema.define(:version => 20121011200019) do
     t.datetime "updated_at", :null => false
     t.integer  "book_id"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -1,5 +1,7 @@
 RubyTestProject::Application.routes.draw do
 
+  resources :line_items
+
   resources :comments
 
   get "pages/help"
@@ -26,6 +28,7 @@ RubyTestProject::Application.routes.draw do
   match '/books/:id/new_photo' => 'books#new_photo'
   match '/books/add_photo'     => 'books#add_photo', :via => :post
 
+  resources :carts
   resources :books
   match 'books' => 'books#index', :via => :get
   
