@@ -203,5 +203,35 @@ class BooksController < ApplicationController
 
       return sum/ratings.size  
     end  
-  end 
+  end
+  
+  def genre
+    @books = Book.all
+    @search = params[:search]
+    
+    @books.each do |b|
+      if b.isbn == @search.to_i && @search !="" && @search !=nil
+        @books = Book.find(:all, :conditions => {:isbn => @search})
+      end
+    end
+ 
+    @sbooks = Book.all
+    @kind = params[:kind]
+#    @rates = Rate.all
+    if @kind.to_i == 1
+      @books = @books.sort_by!{|b| b.title}
+    elsif @kind.to_i == 2
+      @books = @books.sort_by!{|b| b.price}
+    elsif @kind.to_i == 3
+      @books = @books.sort_by!{|b| b.middle_rate}.reverse
+    elsif @kind.to_i == 4
+      @books = @books.sort_by!{|b| b.comments.size}.reverse
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @books }
+    end
+  end
+  
 end
