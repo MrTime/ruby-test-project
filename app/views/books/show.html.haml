@@ -56,24 +56,33 @@
 %span.badge.badge-success#visible_rate  
 %br
 
-= link_to 'Edit', edit_book_path(@book)
-|
-%a.btn{:href => "/books"} Back
 
 =form_tag ({:controller => "comments", :actions => "create"}, :remote => true) do
   =text_area_tag :content, "", :size=>'80x5'
   =text_field_tag :book_id, @book.id, :style => "display: none;"
   =submit_tag "Add Comment"
+%a.btn{:href => "/books/:id/edit"} Edit Book
+
+%a.btn{:href => "/books"} Back
+
+
+
+%HR
 %p
   %b All comments:
   %br
-  %table.comments
+  %table
     - @book.comments.desc.each do |comment|
       %tr
-        %td=comment.user.email
-        %td=comment.created_at
+
+        %td.span.badge=comment.user.email
+        %td.span.badge.badge-inverse=comment.created_at
+
+      %tr.well
+
         %td=comment.content
-        %td=button_to "X", comment_path(comment), :method => :delete
+        %td=button_to "Delete", comment_path(comment), :method => :delete
+
 %p
 
 

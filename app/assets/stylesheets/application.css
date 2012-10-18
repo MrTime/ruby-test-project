@@ -63,13 +63,13 @@ ul{
 }
 .text3{
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 19px; /* Размер шрифта в пикселях */
-    font-style: italic; /* Начертание шрифта */
-    font-weight: 800; /* Насыщенность шрифта */
-    text-align:  left  /* выравнивание текста */
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 800;
+    text-align:  left
 }
 
-/*.comments tr td{
-    border: 1px solid #ff0000;
-    width: 250px;
+.comments tr td{
+    border: 1px solid #CCCCCC;
+    width: 150px;
 }
