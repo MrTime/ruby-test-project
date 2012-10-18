@@ -7,10 +7,13 @@ class CommentsController < ApplicationController
     @email = @user.email
     @comment = Comment.new
     @comment.content = params[:content]
+
     @comment.user_id = current_user.id
+
+    @com_user = User.find(@comment.user_id)
     @comment.book_id = params[:book_id].to_i
       if @comment.save
-      UserMailer.send_comment(@user, @comment, @email, @book_id).deliver
+      UserMailer.send_comment(@user, @book_id, @com_user.email).deliver
       redirect_to :back
     end
   end
