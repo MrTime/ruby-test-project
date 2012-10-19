@@ -12,5 +12,13 @@ describe GenresController do
       response.should render_template("genres/genre")
       response.body.should == ""
     end
+      let(:book) do
+        mock_model Book, :title => "roman",
+                        :genre => "roman"
+      end
+    it "value books" do
+      get :genre
+      assigns(:books).size.should == 1  
+    end
   end
 end
