@@ -5,6 +5,8 @@ source 'https://rubygems.org'
   gem 'devise', '2.1.2'
 
   gem 'curb', '0.8.1'
+  gem 'will_paginate', '3.0.3'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
