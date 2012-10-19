@@ -4,14 +4,12 @@
       %li
         .article-wrap
           .article
-            - if book.photo
-              .image_book 
-                = image_tag book.photo.image_path, size: '200x200'
-                %br
-                %br
+            - if book.photo 
+              = image_tag book.photo.image_path, :class => 'image_book'
+              %br
+                
             - else
-              %div
-                = image_tag '/assets/default/default-book.png', size: '200x200'
+              = image_tag '/assets/default/default-book.png', :class => 'image_book'
               %br
 
             = link_to book.title, book_path(book)

@@ -1,6 +1,7 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
 
 .dashboard {
 
@@ -10,17 +11,27 @@
 
 }
 
-.content-main {
-  margin: 0 0 15px 15px;
+img {
+/*
+  max-width: 100%;
+  height: 200px;
+  width: auto\9; /* ie8 */
+}
+
+.content-wrap {
+  width: 980px;
+  margin: 0 auto;
   padding: 12px;
   background-color: #f9f9f9;
-
-  width: 900px;
 
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-
+}
+.content-main {
+  background-color: #fff;
+  margin: 0 auto;
+  width: 900px;
 }
 
 tr th {
@@ -34,7 +45,23 @@ td {
 table {
 
 }
-      
+#form-sort {
+  position: relative;
+  left: 100px;
+  top: 25px; 
+  width: 300px;
+}
+#form-shearch {
+  position: relative;
+  bottom: 20px;
+  left: 450px;
+  width: 300px;  
+} 
+#btn-new-book {
+  position: relative;
+  
+  margin: 0 auto;
+}
 .article-wrap {
   padding: 3px;
   border-radius: 5px;
@@ -44,10 +71,12 @@ table {
 }
 
 .article {
+  border: 1px solid #DDDDDD;
   border-radius: 5px;
   background-color: #fff;
   height: 300px;  
   padding: 5px;
+  text-align: center;
 }
 ul {
   list-style: none outside none;
@@ -57,8 +86,11 @@ li {
   float: left
 }
 .image_book {
-
+  max-width: 100%;
+  height: 200px;
+  width: auto\9; /* ie8 */  
 }
+
 .mini-profile {
 }
 

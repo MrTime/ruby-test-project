@@ -1,11 +1,39 @@
 @media screen and (max-width: 980px) {
+   .content-wrap { 
+     width: 90%;
+   }
    .content-main {
-     width: 600px;
+     width: 90%; 
+     margin: 0 auto;
+   }
+   #form-sort {
+     left: 20%;
+   }
+   #form-shearch {  
+     left: 70%;
+   }
+
+}
+@media screen and (max-width: 660px) {
+   
+   .content-main {
+     width: auto;
+   }
+
+   #form-sort {
+     left: 0px; 
+     margin: 0 auto;
+     top: 10px; 
+   }
+
+   #form-shearch {
+     left: 0px;
+     margin: 0 auto;
+     top: 0px;
    }
 }
-
 @media screen and (max-width: 480px) {
-   .content-main {
+/*   .content-main {
      width: 300px;
-   }
+   }*/
 }

@@ -5,22 +5,22 @@
 
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
- 
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     = csrf_meta_tags
     = render 'layouts/shim'
     = render 'layouts/tags'
   %body
     = render 'layouts/facebook'
     = render 'layouts/header'
-    .container
+    .content-wrap
       .dashboard
         = render 'layouts/error_messages'
 
         - if user_signed_in?
-          - @user = current_user
-          = render 'layouts/mini_profile'
-          = render 'layouts/wtf_module'
-          = render 'layouts/trends'
+          /- @user = current_user
+          /= render 'layouts/mini_profile'
+          /= render 'layouts/wtf_module'
+          /= render 'layouts/trends'
         - else
           / = render 'layouts/sign_in'
           / = render 'layouts/sign_up'
