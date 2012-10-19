@@ -12,7 +12,7 @@ class GenresController < ApplicationController
     if params[:id] != nil
       @book = Book.find(params[:id])
       @genre = @book.genre
-    @sbooks = Book.find(:all, :conditions => {:genre => @genre})
+      @sbooks = Book.find(:all, :conditions => {:genre => @genre})
     end
     respond_to do |format|
       format.html 
