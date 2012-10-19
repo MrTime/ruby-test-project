@@ -43,7 +43,8 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-
+gem 'omniauth-google'
+gem 'omniauth-openid'
 group :production do
 #  gem 'pg'
 #  gem 'activerecord-postgresql-adapter'
