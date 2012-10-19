@@ -7,6 +7,8 @@ RubyTestProject::Application.routes.draw do
   get "pages/contact"
   get "pages/news"
   root :to => 'home#index' #home page
+  
+  match 'books/rate/:id' => 'books#rate'
 
   resources :comments
   resources :users, :sign_up do
@@ -37,6 +39,7 @@ RubyTestProject::Application.routes.draw do
 
   #match 'search' => 'search#index'
   #match 'search_books' => 'search#search_books'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
