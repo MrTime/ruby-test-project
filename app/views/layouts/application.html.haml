@@ -23,7 +23,8 @@
           /= render 'layouts/trends'
         - else
           = render 'layouts/sign_in'
-          = render 'layouts/sign_up'
+          / #btn-sign-up
+          /   = link_to 'Sign up', '/users/sign_up', :class => "btn"
       #content-main
         = yield
       = render 'layouts/footer'

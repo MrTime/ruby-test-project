@@ -1,8 +1,8 @@
 #mini-profile
   - if @user
     - if @user.photo
-      #image-user
-        = image_tag @user.photo.image_path, size: '100x100'
+      #image-user-wrap
+        = image_tag @user.photo.image_path, size: '150x150', :id => "image-user"
     - else
       #image-user
         = image_tag '/assets/default/default-user.png', size: '100x100'

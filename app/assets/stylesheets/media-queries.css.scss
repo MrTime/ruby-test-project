@@ -26,6 +26,9 @@
   }
   #image-user {
     float: left;
+    margin-right: 10px; 
+    height: 100px;
+    width: auto;
   }
   #btn-new-book {
     left: 45%;
@@ -39,7 +42,5 @@
 
 }
 @media screen and (max-width: 480px) {
-/*   .content-main {
-     width: 300px;
-   }*/
+  
 }

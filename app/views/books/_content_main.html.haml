@@ -11,15 +11,15 @@
             - else
               = image_tag '/assets/default/default-book.png', :class => 'image_book'
               %br
-
-            = link_to book.title, book_path(book)
-            %br
-            = book.author
-            %br
-            = book.description
-            %br
-            = book.price
-            %br
+            .article-text
+              = link_to book.title, book_path(book)
+              %br
+              = book.author
+              %br
+              = book.description
+              %br
+              = "Price: " + book.price.to_s
+              %br
 - else
-  %div
+  %h
     No books!
