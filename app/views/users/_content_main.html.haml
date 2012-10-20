@@ -1,27 +1,29 @@
+#btn-new-book
+  = link_to 'New Book', new_book_path, :class => "btn btn-large disabled"
+
 - if @user && !@user.books.empty?
+  %ul
+    - @user.books.each do |book|
+      %li
+        .article-wrap
+          .article
+            - if book.photo
+              %div
+                = image_tag book.photo.image_path, :class => 'image_book'
+                %br
+            - else
+              %div
+                = image_tag '/assets/default/default-book.png', :class => 'image_book'
+              %br
 
-  - @user.books.each do |book|
-    .article
-      - if book.photo
-        %div
-          = image_tag book.photo.image_path, size: '100x100'
-          %br
-          %br
-      - else
-        %div
-          = image_tag '/assets/default/default-book.png', size: '100x100'
-        %br
-
-      = link_to book.title, book_path(book)
-      %br
-      = book.author
-      %br
-      = book.description
-      %br
-      = book.price
-      %br
+            = link_to book.title, book_path(book)
+            %br
+            = book.author
+            %br
+            = book.description
+            %br
+            = book.price
+            %br
 - else
   %div
     No books!
-
-= link_to 'New Book', new_book_path

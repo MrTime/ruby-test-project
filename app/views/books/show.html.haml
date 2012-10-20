@@ -1,19 +1,17 @@
 %p#notice= notice
+%h1
+  = @book.title
 - if @book.photo
-  %div
+  #image-book-index
     = image_tag @book.photo.image_path
 - else
   %div
     = image_tag '/assets/default/default-book.png'
-%p
-  %b Author:
+%h3
   = @book.author
 %p
   %b All Author:
   = @book.authors.collect(&:author).join(", ")
-%p
-  %b Title:
-  = @book.title
 %p
   %b Description:
   = @book.description
