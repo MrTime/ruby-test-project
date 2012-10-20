@@ -10,13 +10,10 @@ describe "genres/genre.html.haml" do
     render
     rendered.should =~ /This content/
   end
-  
-    context "with 2 genres" do
-    before(:each) do
-      assign(:books, [
-        stub_model(Book, :genre => "slicer"),
-        stub_model(Book, :genre => "dicer")
-      ])
+      
+    it "value in the page" do
+      stub_template "genres/genre.html.haml" => "Genres"
+      render
+      expect(rendered).to match /Genres/
     end
-  end
 end

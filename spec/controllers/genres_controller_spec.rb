@@ -2,6 +2,8 @@ require "spec_helper"
 
 describe GenresController do 
   describe "genre" do
+    #fixtures :books
+
     it "renders the genre template" do
       get :genre
       response.should render_template("genre")
@@ -20,5 +22,14 @@ describe GenresController do
       get :genre
       assigns(:books).size.should == 1  
     end
-  end
+    
+
+    it "assigns all books to @books" do
+      book = stub_model(Book)
+      Book.stub(:all) { [book] }
+      get :genre
+      expect(assigns(:books)).to eq([book])
+    end
+    end
+    
 end
