@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012123203) do
+ActiveRecord::Schema.define(:version => 20121017191950) do
 
   create_table "authors", :force => true do |t|
     t.text     "author"
@@ -24,16 +24,16 @@ ActiveRecord::Schema.define(:version => 20121012123203) do
     t.string   "author"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 0
+    t.decimal  "price",       :precision => 10, :scale => 2
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.integer  "user_id"
     t.string   "owner_login"
+    t.integer  "user_id"
     t.integer  "isbn"
     t.string   "genre"
     t.integer  "year"
+    t.integer  "middle_rate"
     t.string   "keyword"
-    t.integer  "rate"
   end
 
   create_table "comments", :force => true do |t|
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(:version => 20121012123203) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "uname"
+    t.string   "uemail"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -77,6 +87,9 @@ ActiveRecord::Schema.define(:version => 20121012123203) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "fullname"
+    t.string   "shortbio"
+    t.string   "weburl"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -13,7 +13,7 @@
     %th
     %th
     %th
-  - @books.each do |book|
+  - @sbooks.each do |book|
     %tr
       %td= book.author
       %td= book.title
@@ -27,18 +27,16 @@
       %td= link_to 'Show detail information', book
       %td= book.authors.collect(&:author).join(", ")
       
-//      %td= link_to 'Edit', edit_book_path(book)
-//      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= form_tag("/books/", :method=>'get' ) do
-  = label_tag(:kind, "Sort by: ")
-  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { :onchange => "this.form.submit();"})
-
-= form_tag("/books/", :method => "get") do
-  = label_tag(:search, "Search by ISBN:")
-  = text_field_tag(:search)
-  = submit_tag("Search")
   
 = link_to 'New Book', new_book_path
 %br/
-= link_to 'Genre page', "/genres"
+\#{link_to 'Back', books_path}
+
+%table
+  %tr
+    %th Genres
+- @books.each do |book|
+  %p.list
+    %a{:href => "http://localhost:3000/genres/#{book.id}"}
+      \ #{book.genre} 
