@@ -80,6 +80,7 @@ p {
 /* footer */
 
 footer {
+  clear: both;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
@@ -105,3 +106,5 @@ footer {
 #visible_rate {
   visibility: hidden;
 }
+
+
