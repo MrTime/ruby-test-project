@@ -1,8 +1,9 @@
 <center>
   <h1>Search books</h1>
     <form action='/search_books' >
-     <input type='text' name='search_title'>
+     <input type='text' name='search_title' required placeholder="Enter a title of book">
      <p>
      <input type='submit' value='Search'>
-    </form>    
+    </form>
+  <%= link_to 'Listing books', books_path %>
 </center>
