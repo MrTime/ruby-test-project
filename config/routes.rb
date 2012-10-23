@@ -1,11 +1,17 @@
 RubyTestProject::Application.routes.draw do
-
   #get "home/index"
-
-  root :to => 'home#index' #home page
-
   devise_for :users,:controllers => { :registrations => "registrations" }
 
+  get "pages/help"
+  get "pages/home"
+  get "pages/about"
+  get "pages/contact"
+  get "pages/news"
+  root :to => 'home#index' #home page
+  
+  match 'books/rate/:id' => 'books#rate'
+
+  resources :comments
   resources :users, :sign_up do
     resources :photos
   end
@@ -32,8 +38,8 @@ RubyTestProject::Application.routes.draw do
     resources :books, only: :index
   end
 
-  #match 'search' => 'search#index'
-  #match 'search_books' => 'search#search_books'
+  match 'search' => 'search#index'
+  match 'search_books' => 'search#search_books'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
