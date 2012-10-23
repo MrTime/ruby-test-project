@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-
   def search_books
     search_input = "#{params[:search_title]}"
     search_input = search_input.match(/[^?*]*/).to_s

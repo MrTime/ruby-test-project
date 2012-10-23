@@ -10,12 +10,18 @@
     %th Isbn
     %th Genre
     %th Year
+    %th Keyword
     %th Added by
     %th
     %th
     %th
     %th
   =render :partial => @books_partial
+
+%br/
+= form_tag("/books/", :method=>'get' ) do
+  = label_tag(:kind, "Sort by: ")
+  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { :onchange => "this.form.submit();"})
 
 = form_tag("/books/", :method => "get") do
   = label_tag(:search, "Search by ISBN:")
