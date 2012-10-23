@@ -10,6 +10,11 @@ html {
   overflow-y: scroll;
 }
 
+.container {
+    margin-top: 30px;
+    width: 400px;
+}
+
 body {
   padding-top: 60px;
   background-color: rgb(222, 255, 255);
@@ -101,4 +106,8 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+#visible_rate {
+  visibility: hidden;
 }
