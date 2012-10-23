@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
     #puts params.inspect
 
   	@photo  = Photo.new
-    uploaded_io = params[:photo][:picture]
+    uploaded_io = params[:photo]
     File.open(Rails.root.join('app','assets', 'images', uploaded_io.original_filename), 'wb+') do |file|
       file.write(uploaded_io.read)
     end
