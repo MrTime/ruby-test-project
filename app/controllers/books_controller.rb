@@ -1,9 +1,13 @@
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
+
    before_filter :authenticate, :except => [:index, :show]
 
   def index
+
+    @books_partial = Book.paginate(:page => params[:page], :per_page => 5)
+
     @books = Book.all
     @search = params[:search]
     
@@ -26,9 +30,13 @@ class BooksController < ApplicationController
       @books = @books.sort_by!{|b| b.comments.size}.reverse
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @books }
+    if params[:part]
+      render :partial => @books_partial, :layout => false
+    else
+      respond_to do |format|
+        format.html # index.html.erb                                                                                         ф
+        format.json { render json: @books }
+      end
     end
   end
 

@@ -12,3 +12,7 @@
     .container
       = yield
       = render 'layouts/footer'
+
+= javascript_include_tag 'jquery'
+:javascript
+  jQuery.noConflict();
