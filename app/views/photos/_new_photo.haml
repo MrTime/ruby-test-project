@@ -1,6 +1,12 @@
 %h2 Add Photo
-= form_for [item, @photo],  html: { multipart: true } do |f|
-  = f.file_field :picture
+= form_tag({}, name: "upload", method: "POST", multipart: true) do
+  = file_field_tag 'photo'
+  = hidden_field_tag(:user_id, "#{current_user.id}")
   %br
-  = f.submit "Add"
-= link_to "Back", :back
+  - if params.has_key?("id")
+    = hidden_field_tag(:book_id, "#{@book.id}")
+  = submit_tag 'upload'
+.container
+  .progress
+    .bar{style: "width: 0%;"}
+= javascript_include_tag "upload"

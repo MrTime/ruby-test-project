@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012123203) do
+ActiveRecord::Schema.define(:version => 20121017064850) do
 
   create_table "authors", :force => true do |t|
     t.text     "author"
@@ -24,16 +24,16 @@ ActiveRecord::Schema.define(:version => 20121012123203) do
     t.string   "author"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 0
+    t.decimal  "price",       :precision => 10, :scale => 2
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.integer  "user_id"
     t.string   "owner_login"
+    t.integer  "user_id"
     t.integer  "isbn"
     t.string   "genre"
     t.integer  "year"
+    t.integer  "middle_rate"
     t.string   "keyword"
-    t.integer  "rate"
   end
 
   create_table "comments", :force => true do |t|
