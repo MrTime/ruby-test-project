@@ -4,8 +4,8 @@
       = link_to 'BookStore', '#', id: 'logo'
       %nav
         %ul.nav.pull-right
-          %li= link_to 'Home',    '/users/user_page'
-          %li= link_to 'Help',    '/pages/help'
+          %li= link_to 'Home', root_path
+          %li= link_to 'Help', pages_help_path
           -if current_user
           %li= button_to 'Sign out', destroy_user_session_path, :method => :delete
           -else
