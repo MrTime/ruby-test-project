@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :books
   has_many :comments
+<<<<<<< HEAD
+=======
+  has_many :rate
+>>>>>>> master
   has_one  :photo
   has_one :cart, :dependent => :destroy
   

@@ -23,5 +23,30 @@
     = f.label :price
     %br/
     = f.text_field :price
+  .field
+    = f.label :isbn
+    %br/
+    = f.text_field :isbn
+  .field
+    = f.label :genre
+    %br/
+    = f.text_field :genre
+  .field
+    = f.label :year
+    %br/
+    = f.text_field :year
+  .field
+    = f.label :keyword
+    %br/
+    = f.text_field :keyword
   .actions
     = f.submit
+    
+    .field
+      = label_tag "Authors" 
+      %br/
+      = f.fields_for :authors do |c| 
+        %br/
+        = c.text_field :author 
+        %br/
+

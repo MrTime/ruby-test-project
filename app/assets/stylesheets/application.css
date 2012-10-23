@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  */
+<<<<<<< HEAD
 table.t_example {
     background-color: #ccccc;
     width: 400px
@@ -51,3 +52,7 @@ table.t_example {
     border: 1px solid #0e6508;
     background-color: #8bfb46;
 }
+=======
+ 
+
+>>>>>>> master

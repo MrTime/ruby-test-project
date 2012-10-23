@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121018190213) do
+=======
+ActiveRecord::Schema.define(:version => 20121017191950) do
+>>>>>>> master
 
   create_table "authors", :force => true do |t|
     t.text     "author"
@@ -32,11 +36,16 @@ ActiveRecord::Schema.define(:version => 20121018190213) do
     t.integer  "isbn"
     t.string   "genre"
     t.integer  "year"
+<<<<<<< HEAD
   end
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+=======
+    t.integer  "middle_rate"
+    t.string   "keyword"
+>>>>>>> master
   end
 
   create_table "comments", :force => true do |t|
@@ -45,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121018190213) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+<<<<<<< HEAD
   end
 
   create_table "line_items", :force => true do |t|
@@ -53,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20121018190213) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "quantity",   :default => 1
+=======
+>>>>>>> master
   end
 
   create_table "photos", :force => true do |t|
@@ -63,15 +75,34 @@ ActiveRecord::Schema.define(:version => 20121018190213) do
     t.integer  "book_id"
   end
 
+<<<<<<< HEAD
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
+=======
+  create_table "rates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.integer  "rate"
+>>>>>>> master
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+=======
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "uname"
+    t.string   "uemail"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+>>>>>>> master
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -90,6 +121,9 @@ ActiveRecord::Schema.define(:version => 20121018190213) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "fullname"
+    t.string   "shortbio"
+    t.string   "weburl"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

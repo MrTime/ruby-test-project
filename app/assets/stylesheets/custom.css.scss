@@ -10,6 +10,11 @@ html {
   overflow-y: scroll;
 }
 
+.container {
+    margin-top: 30px;
+    width: 400px;
+}
+
 body {
   padding-top: 60px;
 }
@@ -28,6 +33,8 @@ textarea {
     margin-bottom: 10px;
   }
 }
+
+alert alert-success
 
 /* typography */
 
@@ -98,4 +105,7 @@ footer {
       margin-left: 10px;
     }
   }
+}
+#visible_rate {
+  visibility: hidden;
 }

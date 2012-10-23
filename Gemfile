@@ -3,11 +3,17 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'bootstrap-sass', '2.0.4'
 gem 'devise', '2.1.2'
-
+gem 'progress_upload_field', '~> 0.0.1'
+gem 'curb', '0.8.1'
+gem 'will_paginate', '3.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '0.3.11'
+group :development, :test do
+  gem 'mysql2', '0.3.11'
+  gem 'rspec', '2.11.0'
+  gem 'simplecov', require: false
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +28,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+  gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -38,3 +44,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :production do
+  gem 'pg'
+  gem 'activerecord-postgresql-adapter'
+end
