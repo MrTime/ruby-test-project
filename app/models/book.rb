@@ -1,11 +1,12 @@
 class Book < ActiveRecord::Base
   require "json"
-
-  attr_accessible :author, :description, :price, :title, :authors, :authors_attributes, :user_id, :isbn, :genre, :year
+  attr_accessible :author, :description, :price, :title, :authors, :authors_attributes, :user_id, :isbn, :genre, :year, :keyword, :middle_rate
   has_many :authors
   accepts_nested_attributes_for :authors
+
   has_one :photo
   has_many :comments
+  has_one :rate
   belongs_to :user
 
   def short_link(uri)

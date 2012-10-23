@@ -32,14 +32,36 @@
   %b Year:
   = @book.year
 %p
+  %b Keyword:
+  = @book.keyword
+%p
   %b Added by:
   = @book.owner_login
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
+
+- if @rate 
+  %span.badge.badge-success 
+    Rating: 
+    =@book.middle_rate
+  %br
+- else 
+  .btn-toolbar#button_rate
+    .btn-group
+      .btn#1 1
+      .btn#2 2
+      .btn#3 3
+      .btn#4 4
+      .btn#5 5
+
+%span.badge.badge-success#visible_rate  
+%br
 
 = link_to 'Edit', edit_book_path(@book)
 |
 
 \#{link_to 'Back', books_path}
+
 %p
   %b All comments:
   %br
@@ -64,3 +86,33 @@
     =submit_tag "Add Comment"
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+%h1 Similar books
+
+%table
+  %tr
+    %th Author
+    %th Title
+    %th Description
+    %th Price
+    %th Isbn
+    %th Genre
+    %th Year
+    %th Keywords
+    %th Added by
+    %th
+    %th
+  - @books.each do |book|
+    %tr
+      %td= book.author
+      %td= book.title
+      %td= book.description
+      %td= price book.price
+      %td= book.isbn
+      %td= book.genre
+      %td= book.year
+      %td= book.keyword
+      %td= book.owner_login
+      %td= link_to 'Show detail information', book
+
+=javascript_include_tag "rate_request"
+
