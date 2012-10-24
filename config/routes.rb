@@ -16,6 +16,9 @@ RubyTestProject::Application.routes.draw do
     resources :photos
   end
 
+  match '/auth/:service/callback' => 'services#create' 
+  resources :services, :only => [:index, :create, :destroy]
+
   #match '/users/new_photo' => 'users#new_photo'
   #match '/users/add_photo' => 'users#add_photo' ,   :via => :post
   #match '/users/new_photo' => 'photos#new'

@@ -1,0 +1,28 @@
+%section#deviseauth
+  %h2 Authentication Services - Setting
+  #currservices
+    %h3
+      The following #{@services.count == 1 ? 'account is' : 'accounts are'} connected with your local account at CommunityGuides:
+    - @services.each do |service|
+      .services_used
+        = image_tag "/assets/default/#{service.provider}_64.png", :size => "64x64", :alt => "#{service.provider}"
+        .user
+          .line1
+            Name: #{service.uname} (ID: #{service.uid})
+          .line2
+            Email: #{service.uemail != '' ? service.uemail : 'not set'}
+          .line3
+            - @services.count == 1 ? @msg = 'Removing the last account linked might lock you out of your account if you do not know the email/password sign-in of your local account!' : @msg = ''
+            = link_to "Remove this service", service, :confirm => 'Are you sure you want to remove this authentication service? ' + @msg, :method => :delete, :class => "remove"
+  #availableservices
+    %h3 You can connect more services to your account:
+    #services
+      %a.services{:href => "/auth/facebook"}
+        = image_tag('/assets/default/facebook_64.png', :size => "64x64",  :alt => "Facebook")
+        Facebook
+      %a.services{:href => "/auth/twitter"}
+        = image_tag('/assets/default/twitter_64.png', :size => "64x64",  :alt => "Twitter")
+        Twitter
+      %a.services{:href => "/auth/google"}
+        = image_tag('/assets/default/google_64.png', :size => "64x64")
+    %h4 If you signed-up for CommunityGuides via an authentication service a random password has been set for the local password. You can request a new password using the "Forgot your Password?" link on the sign-in page.
