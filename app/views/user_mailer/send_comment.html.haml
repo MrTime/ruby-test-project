@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Welcome to BookStore, #{@book_owner}
+    %p
+      User with email #{@us_email} at #{@time_comment} add comment to your book with author #{@book_author},
+      comment content is: #{@content}.
+      %br/
+    %p
+      To see new comment, just follow this link: #{@url}.
+    %p Thanks for joining and have a great day!
