@@ -12,6 +12,7 @@ gem 'will_paginate', '3.0.3'
 group :development, :test do
   gem 'mysql2', '0.3.11'
   gem 'rspec', '2.11.0'
+  gem "rspec-rails"
   gem 'simplecov', require: false
 end
 
@@ -44,6 +45,20 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem "omniauth", ">= 1.1.1"
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google'
+gem 'omniauth-openid'
+
+gem "database_cleaner", ">= 0.8.0", :group => :test
+gem "email_spec", ">= 1.2.1", :group => :test
+gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
+gem "launchy", ">= 2.1.2", :group => :test
+gem "capybara", ">= 1.1.2", :group => :test
+gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
+gem "quiet_assets", ">= 1.0.1", :group => :development
 
 #group :production do
   #gem 'pg'

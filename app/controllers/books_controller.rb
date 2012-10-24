@@ -5,18 +5,17 @@ class BooksController < ApplicationController
    before_filter :authenticate, :except => [:index, :show]
 
   def index
-
+    @user = current_user
     @books_partial = Book.paginate(:page => params[:page], :per_page => 5)
-
     @books = Book.all
     @search = params[:search]
-    
+
     @books.each do |b|
       if b.isbn == @search.to_i && @search !="" && @search !=nil
         @books = Book.find(:all, :conditions => {:isbn => @search})
       end
     end
- 
+
     @sbooks = Book.all
     @kind = params[:kind]
 #    @rates = Rate.all
@@ -34,7 +33,7 @@ class BooksController < ApplicationController
       render :partial => @books_partial, :layout => false
     else
       respond_to do |format|
-        format.html # index.html.erb                                                                                         ф
+        format.html # index.html.erb
         format.json { render json: @books }
       end
     end
@@ -46,7 +45,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-
     @current_id = params[:id]
     @sbooks = Book.all
     @keys = []
@@ -65,29 +63,29 @@ class BooksController < ApplicationController
       if @same_key[0] != nil
         @boo.push(b.keyword)
         h[b.keyword] = @same_key.size
-      end 
+      end
       end
     end
 
 # Sorting similar books by amount of key words
     h.sort{|k, v| v[1]<=>k[1]}.each{|e| @final_keys<<e[0]}
 
-# Writing books into array 
+# Writing books into array
     @final_keys.each do |f|
       @books += Book.find(:all, :conditions => {:keyword => f})
     end
-    else 
-      @books = Book.all   
+    else
+      @books = Book.all
     end
 # Deleting book owner of show_page
-    @books.delete_if {|b| b.id.to_i == @current_id.to_i}    
+    @books.delete_if {|b| b.id.to_i == @current_id.to_i}
 
     @rate = false
     rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
 
-    if !rating.empty? 
+    if !rating.empty?
       @rate = true
-    end  
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -176,7 +174,7 @@ class BooksController < ApplicationController
 
       #Calculates the average assessment
       middle = middle_mark book_id
-      
+
       book = Book.find(book_id)
       book.middle_rate = middle
       book.save
@@ -184,12 +182,12 @@ class BooksController < ApplicationController
       response =  middle
     else
       book = Book.find(book_id)
-      
+
       response = book.middle_rate #'You have already rate this book'
     end
 
     render :json => response
-      
+
   end
 
   private
@@ -207,9 +205,10 @@ class BooksController < ApplicationController
 
       ratings.each do |rate|
         sum += rate.rate.to_i
-      end  
+      end
 
       return sum/ratings.size  
     end  
   end 
 end
+

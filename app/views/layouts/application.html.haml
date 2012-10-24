@@ -7,10 +7,24 @@
  
     = csrf_meta_tags
     = render 'layouts/shim'
+    = render 'layouts/tags'
   %body
+    = render 'layouts/facebook'
     = render 'layouts/header'
     .container
-      = yield
+      .dashboard
+        = render 'layouts/error_messages'
+
+        - if user_signed_in?
+          - @user = current_user
+          = render 'layouts/mini_profile'
+          = render 'layouts/wtf_module'
+          = render 'layouts/trends'
+        - else
+          = render 'layouts/sign_in'
+          = render 'layouts/sign_up'
+      .content-main
+        = yield
       = render 'layouts/footer'
 
 = javascript_include_tag 'jquery'

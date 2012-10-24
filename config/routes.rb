@@ -7,8 +7,9 @@ RubyTestProject::Application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get "pages/news"
-  root :to => 'home#index' #home page
-  
+
+  root to: 'books#index' #home page
+
   match 'books/rate/:id' => 'books#rate'
   match 'genres' => 'genres#genre'
   match 'genres/:id' => 'genres#genre'
@@ -17,6 +18,9 @@ RubyTestProject::Application.routes.draw do
   resources :users, :sign_up do
     resources :photos
   end
+
+  match '/auth/:service/callback' => 'services#create' 
+  resources :services, :only => [:index, :create, :destroy]
 
   #match '/users/new_photo' => 'users#new_photo'
   #match '/users/add_photo' => 'users#add_photo' ,   :via => :post

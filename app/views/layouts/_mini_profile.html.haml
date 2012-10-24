@@ -1,0 +1,16 @@
+.mini-profile.dashboard-module
+  - if @user
+    = link_to @user.email, user_path(@user)
+
+    - if @user.photo
+      %div
+        = image_tag @user.photo.image_path, size: '100x100'
+    - else
+      %div
+        = image_tag '/assets/default/default-user.png', size: '100x100'
+
+    = link_to 'Edit profile', edit_user_registration_path
+
+  - else
+    %div.alert.alert-error
+      %h2 Sorry but such user doesn't exist
