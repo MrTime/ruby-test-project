@@ -16,17 +16,20 @@
     %th
     %th
     %th
-  =render :partial => @books_partial
+  = render partial: @books_partial
 
-%br/
-= form_tag("/books/", :method=>'get' ) do
-  = label_tag(:kind, "Sort by: ")
-  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { :onchange => "this.form.submit();"})
+%br
+= form_tag("/books/", method: 'get') do
+  = label_tag(:kind, "Sort by:")
+  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { onchange: "this.form.submit();"})
 
-= form_tag("/books/", :method => "get") do
+= render 'books/content_main'
+
+= form_tag("/books/", method: "get") do
   = label_tag(:search, "Search by ISBN:")
   = text_field_tag(:search)
   = submit_tag("Search")
-  
+
 = link_to 'New Book', new_book_path
-= link_to 'Search book',search_path
+= render 'books/donate'
+= link_to 'Search book', search_path

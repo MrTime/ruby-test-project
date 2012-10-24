@@ -1,12 +1,12 @@
 %header.navbar.navbar-fixed-top
   .navbar-inner
     .container
-      = link_to 'BookStore', '#', id: 'logo'
+      = link_to 'BookStore', root_path, id: 'logo'
       %nav
         %ul.nav.pull-right
           %li= link_to 'Home', root_path
           %li= link_to 'Help', pages_help_path
-          -if current_user
-          %li= button_to 'Sign out', destroy_user_session_path, :method => :delete
-          -else
-            %li= link_to 'Sign in',new_user_session_path
+          - if current_user
+            %li= button_to 'Sign out', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Sign in', new_user_session_path
