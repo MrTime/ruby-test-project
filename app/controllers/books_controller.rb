@@ -207,7 +207,8 @@ class BooksController < ApplicationController
         sum += rate.rate.to_i
       end
 
-      return sum/ratings.size
-    end
-  end
+      return sum/ratings.size  
+    end  
+  end 
 end
+

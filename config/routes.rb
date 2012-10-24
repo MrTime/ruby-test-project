@@ -11,6 +11,8 @@ RubyTestProject::Application.routes.draw do
   root to: 'books#index' #home page
 
   match 'books/rate/:id' => 'books#rate'
+  match 'genres' => 'genres#genre'
+  match 'genres/:id' => 'genres#genre'
 
   resources :comments
   resources :users, :sign_up do
