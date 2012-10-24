@@ -1,12 +1,10 @@
 %p#notice= notice
-- if @book.photo.nil?
+- if @book.photo
   %div
-    = image_tag('/assets/default/default-book.png')
-    %div/
+    = image_tag @book.photo.image_path
 - else
   %div
-    = image_tag(@book.photo.image_path)
-    %div/
+    = image_tag '/assets/default/default-book.png'
 %p
   %b Author:
   = @book.author
@@ -23,7 +21,7 @@
   %b Price:
   = price @book.price
 %p
-  %b Isbn:
+  %b ISBN:
   = @book.isbn
 %p
   %b Genre:
@@ -39,13 +37,18 @@
   = @book.owner_login
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 
+%br
+.fb-like{"data-send"       => "false",
+         "data-width"      => "450",
+         "data-show-faces" => "true",
+         "data-action"     => "recommend"}
 
-- if @rate 
-  %span.badge.badge-success 
-    Rating: 
+- if @rate
+  %span.badge.badge-success
+    Rating:
     =@book.middle_rate
   %br
-- else 
+- else
   .btn-toolbar#button_rate
     .btn-group
       .btn#1 1
@@ -54,13 +57,13 @@
       .btn#4 4
       .btn#5 5
 
-%span.badge.badge-success#visible_rate  
+%span.badge.badge-success#visible_rate
 %br
 
 = link_to 'Edit', edit_book_path(@book)
 |
-
 \#{link_to 'Back', books_path}
+%br
 
 %p
   %b All comments:
@@ -69,21 +72,21 @@
     %table
 
     %tr
-      %td=comment.user.email
+      %td= comment.user.email
     %tr
 
     %tr
-      %td=comment.created_at
-
+      %td= comment.created_at
       %br
 
-      %td=comment.content
-      %br/
+      %td= comment.content
+      %br
 %p
-  =form_tag :controller => "comments", :actions => "create" do
-    =text_area_tag :content, "", :size=>'80x5'
-    =text_field_tag :book_id, @book.id, :style => "display: none;"
-    =submit_tag "Add Comment"
+
+  = form_tag controller: "comments", actions: "create" do
+    = text_area_tag :content, "", size: '80x5'
+    = text_field_tag :book_id, @book.id, style: "display: none;"
+    = submit_tag "Add Comment"
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 %h1 Similar books
@@ -115,4 +118,3 @@
       %td= link_to 'Show detail information', book
 
 =javascript_include_tag "rate_request"
-

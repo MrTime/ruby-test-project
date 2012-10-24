@@ -1,4 +1,5 @@
-= form_tag({}, :name => "upload" , :method => "POST" , :multipart => true) do
+%h2 Add Photo
+= form_tag({}, name: "upload", method: "POST", multipart: true) do
   = file_field_tag 'photo'
   = hidden_field_tag(:user_id, "#{current_user.id}")
   %br
@@ -7,5 +8,5 @@
   = submit_tag 'upload'
 .container
   .progress
-    .bar{:style => "width: 0%;"}
+    .bar{style: "width: 0%;"}
 = javascript_include_tag "upload"

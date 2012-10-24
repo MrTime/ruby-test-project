@@ -7,8 +7,9 @@ RubyTestProject::Application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get "pages/news"
-  root :to => 'home#index' #home page
-  
+
+  root to: 'books#index' #home page
+
   match 'books/rate/:id' => 'books#rate'
 
   resources :comments
