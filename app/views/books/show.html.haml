@@ -32,15 +32,14 @@
 %p
   %b Added by:
   = @book.owner_login
-  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+
+= button_to 'Add To Cart', line_items_path(book_id: @book.id), remote: false
 
 = link_to 'Edit', edit_book_path(@book)
 |
 \#{link_to 'Back', books_path}
 %br
 %br
-= render 'books/buy_now'
-= render 'books/add_to_cart'
 = render 'books/fb_like'
 
 %p

@@ -1,0 +1,15 @@
+defaults: &defaults
+  cool:
+    saweet: nested settings
+
+development:
+  <<: *defaults
+  login: 'seller_1350984281_biz_api1.gmail.com'
+  password: '1350984301'
+  signature: 'A9NlBkvPOlcp4z6lbjO41HkCVhYLAmO-cU6DcbHzakKl-jaVuhnqV7ps'
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

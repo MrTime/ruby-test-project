@@ -12,10 +12,7 @@
     = render 'layouts/header'
     .container
       .dashboard
-        = render 'layouts/error_messages'
-
         - if user_signed_in?
-          - @user = current_user
           = render 'layouts/mini_profile'
           = render 'layouts/wtf_module'
           = render 'layouts/trends'
@@ -23,5 +20,6 @@
           = render 'layouts/sign_in'
           = render 'layouts/sign_up'
       .content-main
+        = render 'layouts/flash_messages'
         = yield
       = render 'layouts/footer'

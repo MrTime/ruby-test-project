@@ -18,5 +18,4 @@ class AuthorsController < ApplicationController
       format.json { render json: @books }
     end
   end
-
 end

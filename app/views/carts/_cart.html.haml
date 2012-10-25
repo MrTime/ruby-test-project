@@ -1,0 +1,17 @@
+%table
+  - @cart.line_items.each do |item|
+    - if item == @current_item
+      %tr#current_item
+    - else
+      %tr
+        %td
+          = item.quantity
+          \×
+        %td= item.book.title
+        %td= number_to_currency(item.total_price)
+      %tr
+        %td{colspan: "2"} Total
+        %td= number_to_currency(item.total_price)
+
+= button_to "Empty carts", @cart, method: :delete, confirm: 'Are you sure?'
+= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), controller: 'paypal_express', action: 'checkout'

@@ -7,5 +7,4 @@ class RegistrationsController < Devise::RegistrationsController
   def edit
     @photo = Photo.new
   end
-
 end

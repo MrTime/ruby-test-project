@@ -35,5 +35,4 @@ class PhotosController < ApplicationController
       redirect_to("/users/#{params[:user_id]}")
   	end
   end
-
 end

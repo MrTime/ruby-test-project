@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   has_many :books
   has_many :comments
   has_one  :photo
+  has_one :cart, dependent: :destroy
 end

@@ -38,6 +38,20 @@ RubyTestProject::Application.routes.draw do
 
   #match 'search' => 'search#index'
   #match 'search_books' => 'search#search_books'
+
+  resources :line_items
+  resources :carts
+
+  match 'authors/list_authors'
+  match 'authors/books_author/:author' => 'authors#books_author'
+
+  match 'search' => 'search#index'
+  match 'search_books' => 'search#search_books'
+
+  get 'paypal_express/checkout'
+  get 'paypal_express/review'
+  get "paypal_express/purchase"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

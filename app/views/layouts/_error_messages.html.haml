@@ -1,8 +1,0 @@
-- if current_user && current_user.errors.any?
-  #error_explanation
-    .alert.alert-error
-      The form contains #{pluralize(current_user.errors.count, 'error')}
-    %ul
-      - current_user.errors.full_messages.each do |msg|
-        %li
-          * #{msg}

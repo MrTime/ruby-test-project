@@ -13,5 +13,4 @@ module ApplicationHelper
   def  price money
     number_to_currency money, precision: 2, unit: "$", separator: "."
   end
-
 end

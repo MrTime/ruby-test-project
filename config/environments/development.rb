@@ -14,6 +14,11 @@ RubyTestProject::Application.configure do
     # :enable_starttls_auto => true # I don't have this, but it should work anyway
   }
 
+  # Force ActiveMerchant into test mode
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+  end
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
