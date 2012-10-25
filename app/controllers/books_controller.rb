@@ -27,6 +27,8 @@ class BooksController < ApplicationController
       @books = @books.sort_by!{|b| b.middle_rate}.reverse
     elsif @kind.to_i == 4
       @books = @books.sort_by!{|b| b.comments.size}.reverse
+    elsif @kind.to_i == 5
+      @books = @books.sort_by!{|b| b.keyword.split.size}.reverse
     end
 
     if params[:part]
