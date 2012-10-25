@@ -39,6 +39,7 @@
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 %HR
 
+
 - if @rate 
   %span.badge.badge-success 
     Rating: 
@@ -57,7 +58,8 @@
 %br
 
 
-=form_tag ({:controller => "comments", :actions => "create"}, :remote => true) do
+
+=form_tag({:controller => "comments", :actions => "create"}, :remote => true) do
   =text_area_tag :content, "", :size=>'80x5'
   =text_field_tag :book_id, @book.id, :style => "display: none;"
   =submit_tag "Add Comment"
@@ -66,22 +68,22 @@
 %a.btn{:href => "/books"} Back
 
 
-
 %HR
 %p
   %b All comments:
   %br
-  %table
+  %table.comments
+    %tr
     - @book.comments.desc.each do |comment|
-      %tr
-
+      %tr._first
+        %td.invisible=comment.id
         %td.span.badge=comment.user.email
         %td.span.badge.badge-inverse=comment.created_at
 
       %tr.well
 
         %td=comment.content
-        %td=button_to "Delete", comment_path(comment), :method => :delete
+        %td=button_to "Delete", comment_path(comment), :method => :delete, :remote => true
 
 %p
 

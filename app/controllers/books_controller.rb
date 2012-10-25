@@ -75,7 +75,7 @@ class BooksController < ApplicationController
     @books.delete_if {|b| b.id.to_i == @current_id.to_i}    
 
     @rate = false
-    rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+    rating = Rate.where("user_id = ? AND book_id = ?", current_user, params[:id])
 
     if !rating.empty? 
       @rate = true

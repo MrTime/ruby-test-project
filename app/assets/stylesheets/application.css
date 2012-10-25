@@ -69,7 +69,6 @@ ul{
     text-align:  left
 }
 
-.comments tr td{
-    border: 1px solid #CCCCCC;
-    width: 150px;
+.invisible{
+    display: none;
 }
