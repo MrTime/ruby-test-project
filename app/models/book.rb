@@ -7,10 +7,8 @@ class Book < ActiveRecord::Base
   has_many :line_items
   has_one :photo
   has_many :comments
-<<<<<<< HEAD
-=======
+
   has_one :rate
->>>>>>> master
   belongs_to :user
 
   def short_link(uri)

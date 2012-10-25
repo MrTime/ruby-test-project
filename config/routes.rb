@@ -1,5 +1,4 @@
 RubyTestProject::Application.routes.draw do
-<<<<<<< HEAD
 
   resources :line_items
 
@@ -32,7 +31,7 @@ RubyTestProject::Application.routes.draw do
   resources :carts
   resources :books
   match 'books' => 'books#index', :via => :get
-=======
+
   #get "home/index"
   devise_for :users,:controllers => { :registrations => "registrations" }
 
@@ -42,8 +41,7 @@ RubyTestProject::Application.routes.draw do
   get "pages/contact"
   get "pages/news"
   root :to => 'home#index' #home page
->>>>>>> master
-  
+
   match 'books/rate/:id' => 'books#rate'
   match 'genres' => 'genres#genre'
   match 'genres/:id' => 'genres#genre'
