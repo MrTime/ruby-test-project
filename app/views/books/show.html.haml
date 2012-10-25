@@ -1,19 +1,18 @@
 %p#notice= notice
+%h1
+  = @book.title
 - if @book.photo
-  %div
+  #image-book-show
     = image_tag @book.photo.image_path
 - else
-  %div
+  #image-book-show
     = image_tag '/assets/default/default-book.png'
-%p
-  %b Author:
+%h3    
   = @book.author
+%br
 %p
   %b All Author:
   = @book.authors.collect(&:author).join(", ")
-%p
-  %b Title:
-  = @book.title
 %p
   %b Description:
   = @book.description
@@ -42,11 +41,12 @@
          "data-width"      => "450",
          "data-show-faces" => "true",
          "data-action"     => "recommend"}
-
+%br
+%br
 - if @rate
   %span.badge.badge-success
     Rating:
-    =@book.middle_rate
+    =@book.middle_rate ? @book.middle_rate : 'no estimate' 
   %br
 - else
   .btn-toolbar#button_rate
@@ -89,32 +89,9 @@
     = submit_tag "Add Comment"
 
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
-%h1 Similar books
-
-%table
-  %tr
-    %th Author
-    %th Title
-    %th Description
-    %th Price
-    %th Isbn
-    %th Genre
-    %th Year
-    %th Keywords
-    %th Added by
-    %th
-    %th
+%h2 Similar books
+%ul
   - @books.each do |book|
-    %tr
-      %td= book.author
-      %td= book.title
-      %td= book.description
-      %td= price book.price
-      %td= book.isbn
-      %td= book.genre
-      %td= book.year
-      %td= book.keyword
-      %td= book.owner_login
-      %td= link_to 'Show detail information', book
+    %li= link_to book.title + " " + book.title, book
 
 =javascript_include_tag "rate_request"

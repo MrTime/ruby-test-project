@@ -3,9 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .dashboard {
-  height: 737px;
-  width: 310px;
-  margin: 0 15px 0 0;
+  width: 270px;
+  
   float: left;
 }
 
@@ -18,14 +17,14 @@
 
   background-color: #f9f9f9;
   padding: 12px;
-//  cursor: pointer;
+/*cursor: pointer;*/
 }
 
 .content-main {
   float: right;
-  width: 576px;
+  width: 600px;
 
-  margin: 0 0 15px 15px;
+  margin: 0 0 15px 0px;
   padding: 12px;
   background-color: #f9f9f9;
 

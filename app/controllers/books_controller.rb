@@ -80,13 +80,16 @@ class BooksController < ApplicationController
 # Deleting book owner of show_page
     @books.delete_if {|b| b.id.to_i == @current_id.to_i}
 
-    @rate = false
-    rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+    #reflects the assessment books
 
-    if !rating.empty?
+    if current_user.nil?
       @rate = true
+    else   
+      rating = Rate.where("user_id = ? AND book_id = ?", current_user.id, params[:id])
+      
+      @rate = !rating.empty? ? true : false
     end
-
+      
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
