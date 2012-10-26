@@ -58,12 +58,19 @@
       .btn#5 5
 
 %span.badge.badge-success#visible_rate
+
 %br
 
 = link_to 'Edit', edit_book_path(@book)
 |
 \#{link_to 'Back', books_path}
 %br
+  %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+  :javascript
+       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+%br
+
+
 
 %p
   %b All comments:

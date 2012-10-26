@@ -24,7 +24,8 @@
     %td= book.owner_login
     %td= link_to 'Show detail information', book
     %td= book.authors.collect(&:author).join(", ")
-    %td= tweet_button(book)
+
+    /%td= tweet_button(book)
 
 //      %td= link_to 'Edit', edit_book_path(book)
 //      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
