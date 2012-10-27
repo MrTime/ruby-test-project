@@ -1,3 +1,4 @@
+%table.table.table-striped/
 %tr
   %th
   %th
@@ -15,7 +16,6 @@
   %tr
     %td= book.author
     %td= book.title
-    %td= book.description
     %td= price book.price
     %td= book.isbn
     %td= book.genre
@@ -24,7 +24,8 @@
     %td= book.owner_login
     %td= link_to 'Show detail information', book
     %td= book.authors.collect(&:author).join(", ")
-    %td= tweet_button(book)
+
+    /%td= tweet_button(book)
 
 //      %td= link_to 'Edit', edit_book_path(book)
 //      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }

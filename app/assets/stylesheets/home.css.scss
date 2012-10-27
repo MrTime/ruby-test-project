@@ -2,51 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.image_book{
+  width: 180px;
+  height: 220px;
+  float: left;
+  margin: 5px;
+}
+
 .dashboard {
-  height: 737px;
+  height: 840px;
   width: 310px;
-  margin: 0 15px 0 0;
   float: left;
 }
 
 .dashboard-module {
-  margin: 0 15px 15px 0;
-
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-
+   float:right;
   background-color: #f9f9f9;
-  padding: 12px;
-//  cursor: pointer;
+
 }
 
 .content-main {
   float: right;
-  width: 576px;
-
-  margin: 0 0 15px 15px;
-  padding: 12px;
+  width: 840px;
+  padding:15px;
   background-color: #f9f9f9;
 
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+
 }
 
 tr th {
   padding: 5px;
-  border: 1px solid black;
+
 }
 
 td {
   padding: 5px;
-  border: 1px solid black;
+
+}
+.invisible{
+  display: none;
 }
 
 table {
   width: 80%;
-  margin: auto;
+  float: left;
 }
 
 .article {
@@ -55,8 +54,7 @@ table {
   margin: 5px;
 }
 
-.mini-profile {
-}
+
 
 .wtf-module {
 }
@@ -66,4 +64,45 @@ table {
 
 .sign-in, .sign-up {
   padding: 20px;
+}
+.text6{
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.3em;
+  color: #000000;
+  font-style: italic;
+  text-align: left;
+  line-height: 33%;
+  letter-spacing: 0.05em;
+}
+.text5{
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.3em;
+  color: #C7C7C7;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+  line-height: 33%;
+  letter-spacing: 0.05em;
+}
+.text{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 800;
+  text-align:  left
+
+}
+.text1{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 600;
+  text-align:  left
+}
+.text3{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 800;
+  text-align:  left
 }

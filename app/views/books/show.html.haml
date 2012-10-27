@@ -1,70 +1,73 @@
 %p#notice= notice
 - if @book.photo
   %div
-    = image_tag @book.photo.image_path
+    = image_tag @book.photo.image_path, :class => "image_book"
 - else
   %div
     = image_tag '/assets/default/default-book.png'
 %p
-  %b Author:
-  = @book.author
-%p
-  %b All Author:
-  = @book.authors.collect(&:author).join(", ")
-%p
-  %b Title:
-  = @book.title
-%p
-  %b Description:
-  = @book.description
-%p
-  %b Price:
-  = price @book.price
-%p
-  %b ISBN:
-  = @book.isbn
-%p
-  %b Genre:
-  = @book.genre
-%p
-  %b Year:
-  = @book.year
-%p
-  %b Keyword:
-  = @book.keyword
-%p
-  %b Added by:
-  = @book.owner_login
-  //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 
-%br
+
+  %p.text3
+    %b.book_info
+    = @book.title
+
+  %p.text1
+    %b.text5 Author:
+    = @book.author
+  %p.text1
+    %b.text5 Price:
+    = price @book.price
+  %p.text1
+    %b.text5 Isbn:
+    = @book.isbn
+  %p.text1
+    %b.text5 Genre:
+    = @book.genre
+  %p.text1
+    %b.text5 Year:
+    = @book.year
+  %p.text1
+    %b.text5 Keyword:
+    = @book.keyword
+  %p.text1
+    %b.text5 Added by:
+    = @book.owner_login
+  %HR
+  %p.text6
+    %b
+    = @book.description
+    //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
+    %br
+
+  %HR
+
+    - if @rate
+      %span.badge.badge-success
+        Rating:
+        =@book.middle_rate
+      %br
+    - else
+      .btn-toolbar#button_rate
+        .btn-group
+          .btn#1 1
+          .btn#2 2
+          .btn#3 3
+          .btn#4 4
+          .btn#5 5
+
+    %span.badge.badge-success#visible_rate
+
 .fb-like{"data-send"       => "false",
          "data-width"      => "450",
          "data-show-faces" => "true",
          "data-action"     => "recommend"}
-
-- if @rate
-  %span.badge.badge-success
-    Rating:
-    =@book.middle_rate
-  %br
-- else
-  .btn-toolbar#button_rate
-    .btn-group
-      .btn#1 1
-      .btn#2 2
-      .btn#3 3
-      .btn#4 4
-      .btn#5 5
-
-%span.badge.badge-success#visible_rate
 %br
-
-= link_to 'Edit', edit_book_path(@book)
-|
-\#{link_to 'Back', books_path}
+  %P
+  %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+  :javascript
+       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 %br
-
 %p
   %b All comments:
   %br
@@ -83,15 +86,19 @@
       %br
 %p
 
+%br
   = form_tag controller: "comments", actions: "create" do
     = text_area_tag :content, "", size: '80x5'
     = text_field_tag :book_id, @book.id, style: "display: none;"
-    = submit_tag "Add Comment"
-
+    = submit_tag "Add Comment", :class => "btn"
+    = link_to 'Edit books', edit_book_path(@book), :class => "btn"
+    = link_to'Back',books_path, :class => "btn"
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
-%h1 Similar books
 
-%table
+
+%h2 Similar books
+
+%table.table.table-striped
   %tr
     %th Author
     %th Title
@@ -115,6 +122,6 @@
       %td= book.year
       %td= book.keyword
       %td= book.owner_login
-      %td= link_to 'Show detail information', book
+      %td= link_to '', book, :class => "icon-eye-open"
 
 =javascript_include_tag "rate_request"

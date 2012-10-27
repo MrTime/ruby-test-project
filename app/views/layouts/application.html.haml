@@ -1,6 +1,6 @@
 !!!
 %html
-  %head
+  %head.content-main
     %title= full_title(yield(:title))
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
@@ -9,17 +9,18 @@
     = render 'layouts/shim'
     = render 'layouts/tags'
   %body
+
     = render 'layouts/facebook'
     = render 'layouts/header'
     .container
-      .dashboard
+      .dashboard-module
         = render 'layouts/error_messages'
 
         - if user_signed_in?
           - @user = current_user
+          .content-main
           = render 'layouts/mini_profile'
-          = render 'layouts/wtf_module'
-          = render 'layouts/trends'
+
         - else
           = render 'layouts/sign_in'
           = render 'layouts/sign_up'
