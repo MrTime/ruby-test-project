@@ -1,9 +1,13 @@
 var currentPage =1;
-
+var kind = 0;
 function checkScroll() {
     if (nearBottomOfPage()) {
         currentPage++;
-        new Ajax.Request('/books?part=true&page=' + currentPage, {asynhronous:true, evalScripts:true, method:'get',
+        
+        kind = window.location.href.match(/kind=\d+/);
+        kind = (kind != null) ? kind[0].match(/\d+/) : 1;
+
+        new Ajax.Request('/books?part=true&page=' + currentPage + '&kind=' + kind, {asynhronous:true, evalScripts:true, method:'get',
                 onSuccess: function(response) {
                     jQuery('#books_partial').append(response.responseText);
                     if (response.responseText != " "){

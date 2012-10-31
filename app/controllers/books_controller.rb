@@ -6,28 +6,35 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    @books_partial = Book.paginate(:page => params[:page], :per_page => 5)
     @books = Book.all
     @search = params[:search]
-
     @books.each do |b|
       if b.isbn == @search.to_i && @search !="" && @search !=nil
         @books = Book.find(:all, :conditions => {:isbn => @search})
       end
     end
+    
+    @kind = params[:kind] ? params[:kind] : 1
 
-    @sbooks = Book.all
-    @kind = params[:kind]
-#    @rates = Rate.all
-    if @kind.to_i == 1
-      @books = @books.sort_by!{|b| b.title}
-    elsif @kind.to_i == 2
-      @books = @books.sort_by!{|b| b.price}
-    elsif @kind.to_i == 3
-      @books = @books.sort_by!{|b| b.middle_rate}.reverse
-    elsif @kind.to_i == 4
-      @books = @books.sort_by!{|b| b.comments.size}.reverse
-    end
+    query = case @kind.to_i 
+            when 1  
+              'SELECT * FROM books ORDER BY title'
+            when 2
+              'SELECT * FROM books ORDER BY price'
+            when 3
+              'SELECT * FROM books ORDER BY middle_rate DESC'
+            when 4
+             'SELECT books.*, COUNT(*) AS total  
+              FROM 
+                books 
+                LEFT OUTER JOIN 
+                comments 
+                  ON books.id = comments.book_id 
+                    GROUP BY books.id 
+                        ORDER BY total  DESC'
+            end
+
+    @books_partial = Book.paginate_by_sql(query, :page => params[:page], :per_page => 5)
 
     if params[:part]
       render :partial => @books_partial, :layout => false
