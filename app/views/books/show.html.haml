@@ -81,17 +81,19 @@
 
       %td= comment.content
       %br
-%p
-
-  = form_tag controller: "comments", actions: "create" do
-    = text_area_tag :content, "", size: '80x5'
-    = text_field_tag :book_id, @book.id, style: "display: none;"
-    = submit_tag "Add Comment"
-
+- if @current_user
+  %p
+    = form_tag controller: "comments", actions: "create" do
+      = text_area_tag :content, "", size: '80x5'
+      = text_field_tag :book_id, @book.id, style: "display: none;"
+      = submit_tag "Add Comment"
+-else
+  %p To leave a comment, please #{link_to 'sign in', new_user_session_path}
   //= link_to @book.owner_login, {:controller => :users, :action => :show, :id => @book.user_id } #no method
 %h2 Similar books
-%ul
+- if @books.size != 0
   - @books.each do |book|
-    %li= link_to book.title + " " + book.title, book
-
+    %p= link_to book.title + " " + book.title, book
+- else
+  %p No books   
 =javascript_include_tag "rate_request"

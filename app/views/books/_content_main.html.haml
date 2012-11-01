@@ -1,25 +1,23 @@
 - if @books && !@books.empty?
 
   - @books.each do |book|
-    .article
-      - if book.photo
-        %div
-          = image_tag book.photo.image_path, size: '100x100'
+    .article-wrap
+      .article
+        - if book.photo
+          = image_tag book.photo.image_path, :class => 'image_book'
+          %br 
+        - else
+          = image_tag '/assets/default/default-book.png', :class => 'image_book'
           %br
-          %br
-      - else
-        %div
-          = image_tag '/assets/default/default-book.png', size: '100x100'
+      .article-text
+        = link_to book.title, book_path(book)
         %br
-
-      = link_to book.title, book_path(book)
-      %br
-      = book.author
-      %br
-      = book.description
-      %br
-      = book.price
-      %br
+        = book.author
+        %br
+        = book.description
+        %br
+        = "Price: " + book.price.to_s
+        %br
 - else
-  %div
+  %h2
     No books!

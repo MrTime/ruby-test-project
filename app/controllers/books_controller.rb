@@ -6,15 +6,10 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    @books = Book.all
     @search = params[:search]
-    @books.each do |b|
-      if b.isbn == @search.to_i && @search !="" && @search !=nil
-        @books = Book.find(:all, :conditions => {:isbn => @search})
-      end
-    end
-    
     @kind = params[:kind] ? params[:kind] : 1
+
+    @books = params[:search] ? Book.where("isbn = ?", params[:search]) : nil
 
     query = case @kind.to_i 
             when 1  

@@ -1,36 +1,31 @@
 =javascript_include_tag "prototype"
 =javascript_include_tag "endless_page"
-%h1 Listing books
-%table#books_partial
-  %tr
-    %th Author
-    %th Title
-    %th Description
-    %th Price
-    %th Isbn
-    %th Genre
-    %th Year
-    %th Keyword
-    %th Added by
-    %th
-    %th
-    %th
-    %th
+
+#forms
+  = form_tag("/books/", method: 'get') do
+    = label_tag(:kind, "Sort by:")
+    = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { onchange: "this.form.submit();"})
+
+  = form_tag("/books/", method: "get") do
+    = label_tag(:search, "Search by ISBN:")
+    = text_field_tag(:search)
+    = submit_tag("Search")
+
+  = link_to 'New Book', new_book_path  
+  = link_to 'Search book', search_path
+
+
+- if @books 
+  %h1#search-result Search result
+  = render 'books/content_main'
+%br
+
+%h1#listing-books Listing books
+%ul#books_partial
   = render partial: @books_partial
 
 %br
-= form_tag("/books/", method: 'get') do
-  = label_tag(:kind, "Sort by:")
-  = select_tag(:kind, options_for_select([['', 0], ['title', 1], ['price', 2], ['rate', 3], ['comments', 4]]), { onchange: "this.form.submit();"})
 
-= render 'books/content_main'
-
-= form_tag("/books/", method: "get") do
-  = label_tag(:search, "Search by ISBN:")
-  = text_field_tag(:search)
-  = submit_tag("Search")
-
-= link_to 'New Book', new_book_path
 
 = render 'books/donate'
-= link_to 'Search book', search_path
+
